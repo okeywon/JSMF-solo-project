@@ -12,6 +12,8 @@ function LandingPage() {
     history.push('/login');
   };
 
+  let embedId="watch?v=4dCky2vx6K8";
+  
   return (
     <div className="container">
       <h2>Welcome to the Jerry Snyder Memorial Fund home page!</h2>
@@ -29,12 +31,20 @@ function LandingPage() {
         </div>
         <div className="grid-col grid-col_4">
           {/* <RegisterForm /> */}
-          {/* <center>
-            <h4>Admin Login</h4>
-            <button className="btn btn_sizeSm" onClick={onLogin}>
-              Login
-            </button>
-          </center> */}
+          <center>
+            <h4>Past Applicant Videos</h4>
+            <div className="video-responsive">
+              <iframe
+                width="200"
+                height="150"
+                src={`https://www.youtube.com/embed/${embedId}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Embedded youtube"
+              />
+            </div>
+          </center>
         </div>
       </div>
     </div>
