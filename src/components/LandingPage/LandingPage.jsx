@@ -12,8 +12,8 @@ function LandingPage() {
     history.push('/login');
   };
 
-  let embedId="watch?v=4dCky2vx6K8";
-  
+  let embedId="4dCky2vx6K8";
+
   return (
     <div className="container">
       <h2>Welcome to the Jerry Snyder Memorial Fund home page!</h2>
