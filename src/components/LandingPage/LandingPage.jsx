@@ -6,7 +6,6 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
   const history = useHistory();
 
   const onLogin = (event) => {
@@ -15,51 +14,27 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
+      <h2>Welcome to the Jerry Snyder Memorial Fund home page!</h2>
 
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+          "Jerry Snyder, the Iron Range band leader everyone liked..." This caption from a Star Tribune article dated July 24, 2020 captured our band director well. Jerry Snyder made people in his bands feel welcomed, important, happy, and capable. His students over 30 years received a quality music education under his skillful direction. Many of his students have carried music into their adult lives, whether professionally or just for fun. To honor the man who gifted so many with mentoring, friendship, and quality music experiences in the Chisholm Schools and various community and church groups in Minnesota and Arizona, we have established a fund in his honor.
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
+          The mission of the Jerry Snyder Memorial Fund is to honor the musical legacy built by Jerry Snyder at Chisholm High School and to carry it forward by raising funds and awarding at least one scholarship per year to a deserving student from Chisholm High School. Our initial goal is to raise $10,000, enough to fund multiple scholarships in upcoming years.  Our longer-term goal is to make this an annual event in perpetuity, with possible expansions to other gifts and scholarships. Any amount you can donate will be helpful.
           </p>
 
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
-          </p>
         </div>
         <div className="grid-col grid-col_4">
-          <RegisterForm />
-
-          <center>
-            <h4>Already a Member?</h4>
+          {/* <RegisterForm /> */}
+          {/* <center>
+            <h4>Admin Login</h4>
             <button className="btn btn_sizeSm" onClick={onLogin}>
               Login
             </button>
-          </center>
+          </center> */}
         </div>
       </div>
     </div>
