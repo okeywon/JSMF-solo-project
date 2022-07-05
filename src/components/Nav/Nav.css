@@ -1,11 +1,7 @@
 .nav {
-  /* flex box layout */
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-
   margin: 0 0 30px;
-  background-color: #050092;
+  background-color: #1d1c30;
   overflow: hidden;
 }
 
@@ -17,14 +13,14 @@
   font-size: 24px;
   font-weight: 700;
   color: #f2f2f2;
-  padding-left: 10px;
   margin: 0;
+  padding-top: 0px;
 }
 
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: #050092;
+  background-color: #1d1c30;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -38,5 +34,10 @@
 }
 
 .navLink:hover {
-  background-color: #050092;
+  background-color: #4a4a55;
+}
+
+.link-container {
+  display: flex;
+  justify-content: flex-end;
 }
