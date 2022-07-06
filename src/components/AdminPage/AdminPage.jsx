@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useSelector , useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table/Table';
 import TableBody from '@mui/material/TableBody/TableBody';
@@ -10,12 +12,19 @@ import Paper from '@mui/material/Paper';
 
 import './AdminPage.css'
 
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
-
 function AdminPage() {
+  const admin = useSelector(store => store.admin);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ 
+      type: 'FETCH_COMMENTS' 
+    });
+  }, []);
+
+  function editApp(id) {
+    console.log('clicked edit button', id);
+  }
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -36,14 +45,10 @@ function AdminPage() {
     },
   }));
 
-  function createData(status, name, email, phone, address, address2, about, whyYou, file, video, admin) {
-    return { status, name, email, phone, address, address2, about, whyYou, file, video, admin};
-  }
+  function getComments () {
 
-  const rows = [
-    createData('Pending', 'Fred Savage', 'f.savage@yahoo.com', 6543219871, '123 Court Rd', 'Chisholm, MN 55123', 'I can juggle and ride a bike!', 'I was on the honor roll for 3 years and graduated Summa Cum Laude', './myEssay.docx', 'https://youtube.com/example', 'Input notes here'),
-    createData('Selected', 'Bill Theodore', 'b.t123@yahoo.com', 7891234567, '456 Street Rd', 'Chisholm, MN 55123', 'I am an accomplished pianist and skilled painter.', 'I have an acceptance letter to Stanford University', './ICopiedFred.docx', 'https://youtube.com/example2', 'Input notes here'),
-  ];
+    return;
+  }
 
   return (
     <TableContainer component={Paper} className="table">
@@ -54,8 +59,8 @@ function AdminPage() {
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell>Email</StyledTableCell>
             <StyledTableCell>Phone</StyledTableCell>
-            <StyledTableCell>Address</StyledTableCell>
-            <StyledTableCell>Address2</StyledTableCell>
+            <StyledTableCell>Street Address</StyledTableCell>
+            <StyledTableCell>City, State, Zip</StyledTableCell>
             <StyledTableCell>About You</StyledTableCell>
             <StyledTableCell>Why You</StyledTableCell>
             <StyledTableCell>Essay File</StyledTableCell>
@@ -65,23 +70,24 @@ function AdminPage() {
             <StyledTableCell>Delete</StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody className="tbody">
-          {rows.map((row) => (
-            <StyledTableRow key={row.id}>
+        <TableBody>
+          {admin && admin.map((app) => (
+            <StyledTableRow key={app.id}>
               <StyledTableCell component="th" scope="row">
-                {row.status}
+                {app.status}
               </StyledTableCell>
-              <StyledTableCell>{row.name}</StyledTableCell>
-              <StyledTableCell>{row.email}</StyledTableCell>
-              <StyledTableCell>{row.phone}</StyledTableCell>
-              <StyledTableCell>{row.address}</StyledTableCell>
-              <StyledTableCell>{row.address2}</StyledTableCell>
-              <StyledTableCell>{row.about}</StyledTableCell>
-              <StyledTableCell>{row.whyYou}</StyledTableCell>
-              <StyledTableCell>{row.file}</StyledTableCell>
-              <StyledTableCell>{row.video}</StyledTableCell>
-              <StyledTableCell>{row.admin}</StyledTableCell>
-              <StyledTableCell><button className="edit-btn"><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/></button></StyledTableCell>
+              <StyledTableCell>{app.name}</StyledTableCell>
+              <StyledTableCell>{app.email}</StyledTableCell>
+              <StyledTableCell>{app.phone}</StyledTableCell>
+              <StyledTableCell>{app.address}</StyledTableCell>
+              <StyledTableCell>{app.address2}</StyledTableCell>
+              <StyledTableCell>{app.about}</StyledTableCell>
+              <StyledTableCell>{app.whyYou}</StyledTableCell>
+              <StyledTableCell>{app.file}</StyledTableCell>
+              <StyledTableCell>{app.video}</StyledTableCell>
+              <StyledTableCell>{app.comment}</StyledTableCell>
+              <StyledTableCell>{app.vote}</StyledTableCell>
+              <StyledTableCell><button className="edit-btn" onClick={editApp(row.id)}><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/></button></StyledTableCell>
               <StyledTableCell><button className="delete-btn"><img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/></button></StyledTableCell>
             </StyledTableRow>
           ))}

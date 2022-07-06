@@ -36,7 +36,7 @@ function Nav() {
               Dashboard
             </Link>
 
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/admin">
               Admin
             </Link>
 

@@ -63,7 +63,7 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/admin"
           >
             <AdminPage />
           </ProtectedRoute>
@@ -101,14 +101,6 @@ function App() {
             path="/home"
           >
             <LandingPage />
-            {/* {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
-              
-            } */}
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
