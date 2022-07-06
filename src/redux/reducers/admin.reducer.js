@@ -1,5 +1,4 @@
 const adminReducer = (state = [], action) => {
-  console.log(action, "????????????????????/")
     switch (action.type) {
         case 'SET_ADMIN':
           console.log("look here reducer", action);

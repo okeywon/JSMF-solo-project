@@ -15,6 +15,7 @@ import './AdminPage.css'
 function AdminPage() {
   const admin = useSelector(store => store.admin);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch({ 
       type: 'FETCH_ADMIN' 
@@ -22,7 +23,7 @@ function AdminPage() {
   }, []);
 
   function editApp(id) {
-    console.log('clicked edit button', id);
+    console.log('clicked the edit button', id);
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -45,11 +46,6 @@ function AdminPage() {
     },
   }));
 
-  function getComments () {
-
-    return;
-  }
-
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -66,6 +62,7 @@ function AdminPage() {
             <StyledTableCell>Essay File</StyledTableCell>
             <StyledTableCell>Video</StyledTableCell>
             <StyledTableCell>Admin Notes</StyledTableCell>
+            <StyledTableCell>Vote</StyledTableCell>
             <StyledTableCell>Edit</StyledTableCell>
             <StyledTableCell>Delete</StyledTableCell>
           </TableRow>
@@ -87,8 +84,8 @@ function AdminPage() {
               <StyledTableCell>{app.video}</StyledTableCell>
               <StyledTableCell>{app.comment}</StyledTableCell>
               <StyledTableCell>{app.vote}</StyledTableCell>
-              <StyledTableCell><button className="edit-btn" onClick={editApp(app.id)}><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/></button></StyledTableCell>
-              <StyledTableCell><button className="delete-btn"><img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/></button></StyledTableCell>
+              <StyledTableCell><button className="edit-btn" onClick={()=>editApp(app.id)}><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/>Edit</button></StyledTableCell>
+              <StyledTableCell><button className="delete-btn"><img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/>Delete</button></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

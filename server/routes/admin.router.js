@@ -24,11 +24,10 @@ const adminRouter = express.Router();
         on application.id = comment.application_id
     JOIN vote
         on application.id = vote.application_id
-        GROUP BY application.id, comment.comment, vote.vote;
-    `
+    ORDER BY application.id;`
     pool.query(sqlQuery)
         .then((results) => {
-            console.log("router side >>>>>>>>>>", results);
+            // console.log("router side >>>>>>>>>>", results);
             res.send(results.rows)
         })
         .catch((err) => {
