@@ -42,6 +42,7 @@ function LandingPage() {
                 title="Embedded youtube"
               />
             </div>
+            <button><a href="https://gf.me/u/zb8by7" target="_blank">Donate</a></button>
           </center>
         </div>
       </div>
