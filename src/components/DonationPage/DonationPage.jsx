@@ -8,10 +8,7 @@ function DonatePage() {
         <div>
             <p>Care to contribute to the Jerry Snyder Memorial Fund?</p>
             <p>Proceeds are tax deductible! Please request a Tax Credit through the email here: jerrysnyderscholarship@gmail.com</p>
-            <button onClick={()=>(<Route path='/donate' component={() => { 
-                window.location.href = 'https://gf.me/u/zb8by7'; 
-                return null;
-                }}/>)}>Donate</button>
+            <button><a href="https://gf.me/u/zb8by7" target="_blank">Donate</a></button>
         </div>
         </div>
   );
