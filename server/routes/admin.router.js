@@ -6,6 +6,7 @@ const adminRouter = express.Router();
   // GET route code here
   const sqlQuery = `
     SELECT
+        application.id,
         application.status,
         application.name,
         application.email,
@@ -27,6 +28,7 @@ const adminRouter = express.Router();
     `
     pool.query(sqlQuery)
         .then((results) => {
+            console.log("router side >>>>>>>>>>", results);
             res.send(results.rows)
         })
         .catch((err) => {
