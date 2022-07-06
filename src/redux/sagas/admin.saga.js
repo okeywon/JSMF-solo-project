@@ -10,20 +10,9 @@ function* fetchAdmin() {
       console.log('Admin list get request failed', err);
     }
   }
-
-function* fetchDetail(action) {
-  try {
-    const res = yield axios.get(`/api/admin/${action.payload}`);
-    yield put({ type: 'SET_DETAIL', payload: res.data });
-  } catch (err) {
-    console.log('Admin list get request failed', err);
-    return;
-  }
-}  
   
 function* adminSaga() {
   yield takeLatest('FETCH_ADMIN', fetchAdmin);
-  yield takeLatest('FETCH_DETAIL', fetchDetail);
 }
   
   export default adminSaga;

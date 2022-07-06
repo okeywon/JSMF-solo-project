@@ -15,6 +15,12 @@ function adminDetailView() {
             payload: Number(params.id)
         });
     }, [params.id]);
+
+    return (
+        <div>
+            <h3>Application</h3>
+        </div>
+    )
 }
 
 export default adminDetailView;

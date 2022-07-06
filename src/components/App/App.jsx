@@ -19,7 +19,8 @@ import AdminPage from '../AdminPage/AdminPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import Detail from '../AdminDetailView/AdminDetailView';
+import DetailPage from '../AdminDetailView/AdminDetailView';
+import DonatePage from '../DonationPage/DonationPage';
 
 import './App.css';
 
@@ -49,6 +50,14 @@ function App() {
             <AboutPage />
           </Route>
 
+          <Route
+            // shows DonatePage at all times (logged in or not)
+            exact
+            path="/donate"
+          >
+            <DonatePage />
+          </Route>
+
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
@@ -67,9 +76,13 @@ function App() {
             path="/admin"
           >
             <AdminPage />
-            <Route path="/admin/:id" exact>
-              <Detail/>
-            </Route>
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/admin/:id"
+          >
+            <DetailPage/>
           </ProtectedRoute>
 
           <Route
