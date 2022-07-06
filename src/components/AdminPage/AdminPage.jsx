@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import './AdminPage.css'
+
 // This is one of our simplest components
 // It doesn't have local state
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -44,7 +46,7 @@ function AdminPage() {
   ];
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -63,7 +65,7 @@ function AdminPage() {
             <StyledTableCell>Delete</StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className="tbody">
           {rows.map((row) => (
             <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
@@ -79,8 +81,8 @@ function AdminPage() {
               <StyledTableCell>{row.file}</StyledTableCell>
               <StyledTableCell>{row.video}</StyledTableCell>
               <StyledTableCell>{row.admin}</StyledTableCell>
-              <StyledTableCell><button>Edit</button></StyledTableCell>
-              <StyledTableCell><button>Delete</button></StyledTableCell>
+              <StyledTableCell><button className="edit-btn"><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/></button></StyledTableCell>
+              <StyledTableCell><button className="delete-btn"><img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/></button></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

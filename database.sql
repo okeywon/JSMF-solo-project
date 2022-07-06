@@ -1,4 +1,3 @@
-
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -15,26 +14,27 @@ CREATE TABLE "application" (
 	"address" VARCHAR NOT NULL,
 	"address2" VARCHAR NOT NULL,
 	"about" VARCHAR,
-	"why-you" VARCHAR,
+	"whyYou" VARCHAR,
 	"file" VARCHAR,
-	"video" VARCHAR,
-	"admin" VARCHAR DEFAULT 'Edit comment...'
+	"video" VARCHAR
 );
 
 INSERT INTO "application"
 VALUES
-	(1, 'Pending', 'Fred Savage', 'f.savage@yahoo.com', 6543219871, '123 Court Rd', 'Chisholm, MN 55123', 'I can juggle and ride a bike!', 'I was on the honor roll for 3 years and graduated Summa Cum Laude', './myEssay.docx', 'https://youtube.com/example', 'Input notes here'),
-	(2, 'Selected', 'Bill Theodore', 'b.t123@yahoo.com', 7891234567, '456 Street Rd', 'Chisholm, MN 55123', 'I am an accomplished pianist and skilled painter.', 'I have an acceptance letter to Stanford University', './ICopiedFred.docx', 'https://youtube.com/example2', 'Input notes here');
+	(1, 'Pending', 'Fred Savage', 'f.savage@yahoo.com', 6543219871, '123 Court Rd', 'Chisholm, MN 55123', 'I can juggle and ride a bike!', 'I was on the honor roll for 3 years and graduated Summa Cum Laude', './myEssay.docx', 'https://youtube.com/example'),
+	(2, 'Selected', 'Bill Theodore', 'b.t123@yahoo.com', 7891234567, '456 Street Rd', 'Chisholm, MN 55123', 'I am an accomplished pianist and skilled painter.', 'I have an acceptance letter to Stanford University', './ICopiedFred.docx', 'https://youtube.com/example2');
 	
 
-CREATE TABLE "admin" (
-	FOREIGN KEY (id) REFERENCES "user"(id),
-	FOREIGN KEY (id) REFERENCES application(id),
+CREATE TABLE "comment" (
+	"id" SERIAL PRIMARY KEY,
+	"user_id" INT,
+	"application_id" INT,
 	"comment" VARCHAR
 );
 
 CREATE TABLE "vote" (
-	FOREIGN KEY (id) REFERENCES "user"(id),
-	FOREIGN KEY (id) REFERENCES application(id),
+	"id" SERIAL PRIMARY KEY,
+	"user_id" INT,
+	"application_id" INT,
 	"vote" int
 );
