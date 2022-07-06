@@ -19,6 +19,7 @@ import AdminPage from '../AdminPage/AdminPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Detail from '../AdminDetailView/AdminDetailView';
 
 import './App.css';
 
@@ -66,6 +67,9 @@ function App() {
             path="/admin"
           >
             <AdminPage />
+            <Route path="/admin/:id" exact>
+              <Detail/>
+            </Route>
           </ProtectedRoute>
 
           <Route

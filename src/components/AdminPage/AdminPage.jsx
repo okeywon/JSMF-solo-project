@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table/Table';
 import TableBody from '@mui/material/TableBody/TableBody';
@@ -24,6 +25,7 @@ function AdminPage() {
 
   function editApp(id) {
     console.log('clicked the edit button', id);
+    history.push('/admin/:id');
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -62,7 +64,7 @@ function AdminPage() {
             <StyledTableCell>Essay File</StyledTableCell>
             <StyledTableCell>Video</StyledTableCell>
             <StyledTableCell>Admin Notes</StyledTableCell>
-            <StyledTableCell>Vote</StyledTableCell>
+            <StyledTableCell>Votes</StyledTableCell>
             <StyledTableCell>Edit</StyledTableCell>
             <StyledTableCell>Delete</StyledTableCell>
           </TableRow>
@@ -70,9 +72,7 @@ function AdminPage() {
         <TableBody>
           {admin && admin.map((app) => (
             <StyledTableRow key={app.id}>
-              <StyledTableCell component="th" scope="row">
-                {app.status}
-              </StyledTableCell>
+              <StyledTableCell component="th" scope="row">{app.status}</StyledTableCell>
               <StyledTableCell>{app.name}</StyledTableCell>
               <StyledTableCell>{app.email}</StyledTableCell>
               <StyledTableCell>{app.phone}</StyledTableCell>
@@ -84,7 +84,7 @@ function AdminPage() {
               <StyledTableCell>{app.video}</StyledTableCell>
               <StyledTableCell>{app.comment}</StyledTableCell>
               <StyledTableCell>{app.vote}</StyledTableCell>
-              <StyledTableCell><button className="edit-btn" onClick={()=>editApp(app.id)}><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/>Edit</button></StyledTableCell>
+              <StyledTableCell><Link to={`/admin/${app.id}`}><button className="edit-btn" onClick={()=>editApp(app.id)}><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/>Edit</button></Link></StyledTableCell>
               <StyledTableCell><button className="delete-btn"><img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/>Delete</button></StyledTableCell>
             </StyledTableRow>
           ))}

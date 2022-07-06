@@ -2,3 +2,13 @@
     padding: 10px;
     margin: 10px;
 }
+
+.edit-btn:hover {
+    background-color: rgb(206, 201, 201);
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: rgb(206, 201, 201);
+    cursor: pointer;
+}
