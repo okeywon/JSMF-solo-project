@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import DetailPage from '../AdminDetailView/AdminDetailView';
 import DonatePage from '../DonationPage/DonationPage';
 import ContactPage from '../ContactPage/ContactPage';
+import Application from '../ApplyPage/ApplyPage';
 
 import './App.css';
 
@@ -57,6 +58,14 @@ function App() {
             path="/donate"
           >
             <DonatePage />
+          </Route>
+
+          <Route
+            // shows DonatePage at all times (logged in or not)
+            exact
+            path="/apply"
+          >
+            <Application />
           </Route>
 
           <Route

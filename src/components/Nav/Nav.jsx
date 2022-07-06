@@ -23,6 +23,9 @@ function Nav() {
         <Link className="navLink" to="/donate">
           Donate
         </Link>
+        <Link className="navLink" to="/apply">
+          Apply
+        </Link>
         <Link className="navLink" to="/contact">
           Contact Us
         </Link>
