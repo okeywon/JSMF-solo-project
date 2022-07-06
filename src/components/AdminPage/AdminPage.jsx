@@ -17,7 +17,7 @@ function AdminPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ 
-      type: 'FETCH_COMMENTS' 
+      type: 'FETCH_ADMIN' 
     });
   }, []);
 
