@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import DetailPage from '../AdminDetailView/AdminDetailView';
 import DonatePage from '../DonationPage/DonationPage';
+import ContactPage from '../ContactPage/ContactPage';
 
 import './App.css';
 
@@ -56,6 +57,14 @@ function App() {
             path="/donate"
           >
             <DonatePage />
+          </Route>
+
+          <Route
+            // shows DonatePage at all times (logged in or not)
+            exact
+            path="/contact"
+          >
+            <ContactPage />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
