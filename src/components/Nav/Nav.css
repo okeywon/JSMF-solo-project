@@ -1,7 +1,19 @@
+/* .home-img {
+  background-image: url("./images/Jerry-Snyder-copy.jpeg");
+  display: flex;
+  height: 200px;
+  width: 440px;
+  margin: 0 auto;
+} */
+
 .nav {
-  align-items: center;
-  margin: 0 0 30px;
-  background-color: #1d1c30;
+  background-image: url("../../../public/images/Jerry-Snyder-copy.jpeg");
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: -24px;
+  margin: 0;
+  padding: 0;
+  background-color: #1d1d24;
   overflow: hidden;
 }
 
@@ -13,14 +25,15 @@
   font-size: 24px;
   font-weight: 700;
   color: #f2f2f2;
+  text-align: right;
   margin: 0;
-  padding-top: 0px;
+  padding: 50px 50px 70px;
 }
 
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: #1d1c30;
+  background-color: #19191f;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -40,4 +53,5 @@
 .link-container {
   display: flex;
   justify-content: flex-end;
+  padding: 60px 0px 0px;
 }

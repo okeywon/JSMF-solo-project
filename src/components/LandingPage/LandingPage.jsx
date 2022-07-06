@@ -16,8 +16,6 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>Welcome to the Jerry Snyder Memorial Fund home page!</h2>
-
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>

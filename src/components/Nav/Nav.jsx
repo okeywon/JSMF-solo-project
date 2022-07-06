@@ -10,7 +10,6 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <img src="../images/Jerry-Snyder-copy.jpeg" alt="Jerry Snyder Conducting"/>
         <h2 className="nav-title">Jerry Snyder Memorial Fund</h2>
       </Link>
       <div>
