@@ -1,4 +1,5 @@
 import React from 'react';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 function Application() {
 
@@ -11,14 +12,24 @@ function Application() {
                 <input type="phone" placeholder="Phone"/>
                 <input type="street-address" placeholder="Street Address"/>
                 <input type="city, state, zip" placeholder="City, State, Zip"/>
-                <input type="text" placeholder="Tell us about yourself..."/>
-                <input type="text" placeholder="Why are you the best candidate?"/>
+                <TextareaAutosize
+                    maxRows={8}
+                    aria-label="maximum height"
+                    placeholder="Tell us about yourself."
+                    style={{ width: 200 }}
+                />
+                <TextareaAutosize
+                    maxRows={8}
+                    aria-label="maximum height"
+                    placeholder="Why are you the best candidate?"
+                    style={{ width: 200 }}
+                />
                 <input type="file"/>
                 <input type="url" placeholder="Video URL"/>
                 <input type="submit"/>
             </form>
         </div>
-    )
+    );
 }
 
 export default Application;
