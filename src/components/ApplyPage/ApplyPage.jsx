@@ -75,6 +75,7 @@ function Application() {
                         name="name"
                         placeholder="Full Name"
                         onChange={(evt) => setFormData({...formData, name: evt.target.value})}
+                        value={formData.name}
                     />
                     {errors.name && touched.name && errors.name}
                     <input
@@ -82,7 +83,8 @@ function Application() {
                         type="email"
                         name="email"
                         placeholder="Email"
-                        onChange={(evt) => setFormData({...formData, email: evt.target.value})} 
+                        onChange={(evt) => setFormData({...formData, email: evt.target.value})}
+                        value={formData.email}
                     />
                     {errors.email && touched.email && errors.email}
                     <input
@@ -91,6 +93,7 @@ function Application() {
                         name="phone"
                         placeholder="Phone"
                         onChange={(evt) => setFormData({...formData, phone: evt.target.value})}
+                        value={formData.phone}
                     />
                     {errors.phone && touched.phone && errors.phone}
                     <input
@@ -99,6 +102,7 @@ function Application() {
                         name="address"
                         placeholder="Street Address"
                         onChange={(evt) => setFormData({...formData, address: evt.target.value})}
+                        value={formData.address}
                     />
                     {errors.address && touched.address && errors.address}
                     <input
@@ -107,6 +111,7 @@ function Application() {
                         name="address2"
                         placeholder="City, State, Zip"
                         onChange={(evt) => setFormData({...formData, address2: evt.target.value})}
+                        value={formData.address2}
                     />
                     {errors.address2 && touched.address2 && errors.address2}
                     <TextareaAutosize
@@ -118,6 +123,7 @@ function Application() {
                         placeholder="Tell us about yourself."
                         style={{ width: 200 }}
                         onChange={(evt) => setFormData({...formData, about: evt.target.value})}
+                        value={formData.about}
                     />
                     {errors.about && touched.about && errors.about}
                     <TextareaAutosize
@@ -129,10 +135,22 @@ function Application() {
                         placeholder="Why are you the best candidate?"
                         style={{ width: 200 }}
                         onChange={(evt) => setFormData({...formData, whyYou: evt.target.value})}
+                        value={formData.whyYou}
                     />
                     {errors.whyYou && touched.whyYou && errors.whyYou}
-                    <input className="input" type="file" onChange={(evt) => setFormData({...formData, file: evt.target.value})}/>
-                    <input className="input" type="url" placeholder="Video URL" onChange={(evt) => setFormData({...formData, video: evt.target.value})}/>
+                    <input
+                        className="input"
+                        type="file"
+                        onChange={(evt) => setFormData({...formData, file: evt.target.value})}
+                        value={formData.file}
+                    />
+                    <input
+                        className="input"
+                        type="url"
+                        placeholder="Video URL"
+                        onChange={(evt) => setFormData({...formData, video: evt.target.value})}
+                        value={formData.video}
+                    />
                     <input className="submit-btn" type="submit"/>
                 </form>
             )}

@@ -20,9 +20,9 @@ const adminRouter = express.Router();
         comment.comment,
         vote.vote
     FROM application
-    JOIN comment
+    LEFT JOIN comment
         on application.id = comment.application_id
-    JOIN vote
+    LEFT JOIN vote
         on application.id = vote.application_id
     ORDER BY application.id;`
     pool.query(sqlQuery)
