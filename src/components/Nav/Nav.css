@@ -45,6 +45,23 @@
   background-color: #4EC4DE;
 }
 
+.navLink2 {
+  display: inline-block;
+  color: #F8F3F5;
+  background-color: #0756B1;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+}
+
+.navLink2:hover {
+  background-color: #4EC4DE;
+}
+
 .link-container {
   display: flex;
   justify-content: flex-end;
