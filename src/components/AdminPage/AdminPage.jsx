@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
@@ -11,6 +11,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 import './AdminPage.css'
 
@@ -18,6 +22,7 @@ function AdminPage() {
   const admin = useSelector(store => store.admin);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [status, setStatus] = useState({status: ''});
 
   useEffect(() => {
     dispatch({ 
@@ -29,6 +34,10 @@ function AdminPage() {
     console.log('clicked the edit button', id);
     history.push('/admin/:id');
   }
+
+  const handleChange = (event) => {
+    setStatus(event.target.value);
+  };
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -74,7 +83,26 @@ function AdminPage() {
         <TableBody>
           {admin && admin.map((app) => (
             <StyledTableRow key={app.id}>
-              <StyledTableCell component="th" scope="row">{app.status}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                  <InputLabel id="table-drop-down">Select</InputLabel>
+                  <Select
+                    labelId="status-select"
+                    id="status-select"
+                    value={status}
+                    onChange={handleChange}
+                    label="Status"
+                  >
+                    <MenuItem value="Status">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={status.status}>Pending</MenuItem>
+                    <MenuItem value={status.status}>Selected</MenuItem>
+                    <MenuItem value={status.status}>Awarded</MenuItem>
+                    <MenuItem value={status.status}>Denied</MenuItem>
+                  </Select>
+                </FormControl>
+              </StyledTableCell>
               <StyledTableCell>{app.name}</StyledTableCell>
               <StyledTableCell>{app.email}</StyledTableCell>
               <StyledTableCell>{app.phone}</StyledTableCell>
