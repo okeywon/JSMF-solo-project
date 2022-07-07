@@ -19,6 +19,7 @@ function adminDetailView() {
     return (
         <div>
             <h3>Application</h3>
+            <h4>{application.name}</h4>
         </div>
     )
 }

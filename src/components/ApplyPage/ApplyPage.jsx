@@ -18,7 +18,7 @@ function Application() {
                 formData
             }
         });
-        // value=setFormData('');
+        setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
     }
 
     return (

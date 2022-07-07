@@ -22,7 +22,7 @@ function AdminPage() {
   const admin = useSelector(store => store.admin);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [status, setStatus] = useState({status: ''});
+  const [select, setSelect] = useState({status: ''});
 
   useEffect(() => {
     dispatch({ 
@@ -34,10 +34,6 @@ function AdminPage() {
     console.log('clicked the edit button', id);
     history.push('/admin/:id');
   }
-
-  const handleChange = (event) => {
-    setStatus(event.target.value);
-  };
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -89,17 +85,14 @@ function AdminPage() {
                   <Select
                     labelId="status-select"
                     id="status-select"
-                    value={status}
-                    onChange={handleChange}
+                    value={select.status}
+                    onChange={(evt)=>setStatus({...select, status: evt.target.value})}
                     label="Status"
                   >
-                    <MenuItem value="Status">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={status.status}>Pending</MenuItem>
-                    <MenuItem value={status.status}>Selected</MenuItem>
-                    <MenuItem value={status.status}>Awarded</MenuItem>
-                    <MenuItem value={status.status}>Denied</MenuItem>
+                    <MenuItem>Pending</MenuItem>
+                    <MenuItem>Selected</MenuItem>
+                    <MenuItem>Awarded</MenuItem>
+                    <MenuItem>Denied</MenuItem>
                   </Select>
                 </FormControl>
               </StyledTableCell>
