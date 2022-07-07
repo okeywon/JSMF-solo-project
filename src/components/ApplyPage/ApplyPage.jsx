@@ -1,25 +1,21 @@
 import React from 'react';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import { Formik} from "formik";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react'
+import { Formik } from "formik";
 import '../ApplyPage/ApplyPage.css'
 
 function Application() {
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''})
 
     const newApplication = (evt) => {
         evt.preventDefault();
 
-        dispatchEvent({
+        dispatch({
             type: 'ADD_APP',
             payload: {
-                name,
-                email,
-                phone,
-                address,
-                address2,
-                about,
-                whyYou,
-                file,
-                video: url
+                formData
             }
         });
     }
@@ -77,8 +73,7 @@ function Application() {
                         type="name"
                         name="name"
                         placeholder="Full Name"
-                        onChange={handleChange}
-                        value={values.name}
+                        onChange={(evt) => setFormData({...formData, name: evt.target.value})}
                     />
                     {errors.name && touched.name && errors.name}
                     <input
@@ -86,8 +81,7 @@ function Application() {
                         type="email"
                         name="email"
                         placeholder="Email"
-                        onChange={handleChange}
-                        value={values.email}    
+                        onChange={(evt) => setFormData({...formData, email: evt.target.value})} 
                     />
                     {errors.email && touched.email && errors.email}
                     <input
@@ -95,8 +89,7 @@ function Application() {
                         type="phone"
                         name="phone"
                         placeholder="Phone"
-                        onChange={handleChange}
-                        value={values.phone}
+                        onChange={(evt) => setFormData({...formData, phone: evt.target.value})}
                     />
                     {errors.phone && touched.phone && errors.phone}
                     <input
@@ -104,8 +97,7 @@ function Application() {
                         type="address"
                         name="address"
                         placeholder="Street Address"
-                        onChange={handleChange}
-                        value={values.address}
+                        onChange={(evt) => setFormData({...formData, address: evt.target.value})}
                     />
                     {errors.address && touched.address && errors.address}
                     <input
@@ -113,8 +105,7 @@ function Application() {
                         type="address2"
                         name="address2"
                         placeholder="City, State, Zip"
-                        onChange={handleChange}
-                        value={values.address2}
+                        onChange={(evt) => setFormData({...formData, address2: evt.target.value})}
                     />
                     {errors.address2 && touched.address2 && errors.address2}
                     <TextareaAutosize
@@ -125,8 +116,7 @@ function Application() {
                         aria-label="maximum height"
                         placeholder="Tell us about yourself."
                         style={{ width: 200 }}
-                        onChange={handleChange}
-                        value={values.about}
+                        onChange={(evt) => setFormData({...formData, about: evt.target.value})}
                     />
                     {errors.about && touched.about && errors.about}
                     <TextareaAutosize
@@ -137,12 +127,11 @@ function Application() {
                         aria-label="maximum height"
                         placeholder="Why are you the best candidate?"
                         style={{ width: 200 }}
-                        onChange={handleChange}
-                        value={values.whyYou}
+                        onChange={(evt) => setFormData({...formData, whyYou: evt.target.value})}
                     />
                     {errors.whyYou && touched.whyYou && errors.whyYou}
-                    <input className="input" type="file"/>
-                    <input className="input" type="url" placeholder="Video URL"/>
+                    <input className="input" type="file" onChange={(evt) => setFormData({...formData, file: evt.target.value})}/>
+                    <input className="input" type="url" placeholder="Video URL" onChange={(evt) => setFormData({...formData, url: evt.target.value})}/>
                     <input className="submit-btn" type="submit"/>
                 </form>
             )}
