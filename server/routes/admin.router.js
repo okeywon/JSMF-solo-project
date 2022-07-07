@@ -35,23 +35,23 @@ const adminRouter = express.Router();
         });
 });
 
- adminRouter.post('/admin', (req, res) => {
+ adminRouter.post('/', (req, res) => {
     console.log('in POST', req.body);
 
   const sqlQuery = `
-    INSERT INTO application (name, email, phone, address, address2, about, whyYou, file, video)
+    INSERT INTO application (name, email, phone, address, address2, about, "whyYou", file, video)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
   const sqlParams = [
-    req.body.name,
-    req.body.email,
-    req.body.phone,
-    req.body.address,
-    req.body.address2,
-    req.body.about,
-    req.body.whyYou,
-    req.body.file,
-    req.body.video
-  ];
+    req.body.formData.name,
+    req.body.formData.email,
+    req.body.formData.phone,
+    req.body.formData.address,
+    req.body.formData.address2,
+    req.body.formData.about,
+    req.body.formData.whyYou,
+    req.body.formData.file,
+    req.body.formData.video
+ ];
   pool.query(sqlQuery, sqlParams)
   .then((results) => {
     console.log('POST is sending', results.rows);

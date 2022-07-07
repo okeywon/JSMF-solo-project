@@ -12,6 +12,7 @@ function* fetchAdmin() {
   }
 
 function* addApp(action) {
+  console.log("Adding an application, it reached admin.saga >>>>>>>>>>>>>", action)
   try {
     yield axios.post('/api/admin', action.payload);
   }

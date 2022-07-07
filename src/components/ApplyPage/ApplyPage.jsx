@@ -18,13 +18,14 @@ function Application() {
                 formData
             }
         });
+        // value=setFormData('');
     }
 
     return (
         <div className="application">
             <h4>Apply Here:</h4>
             <Formik
-                initialValues={{name: '', email: '', phone: '', address: '', address2: '', about: '', whyYou: ''}}
+                initialValues={{name: '', email: '', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''}}
                 validate={values => {
                     const errors = {};
                     if (!values.name) {
@@ -131,7 +132,7 @@ function Application() {
                     />
                     {errors.whyYou && touched.whyYou && errors.whyYou}
                     <input className="input" type="file" onChange={(evt) => setFormData({...formData, file: evt.target.value})}/>
-                    <input className="input" type="url" placeholder="Video URL" onChange={(evt) => setFormData({...formData, url: evt.target.value})}/>
+                    <input className="input" type="url" placeholder="Video URL" onChange={(evt) => setFormData({...formData, video: evt.target.value})}/>
                     <input className="submit-btn" type="submit"/>
                 </form>
             )}
