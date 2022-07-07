@@ -5,6 +5,20 @@ h2 {
   text-align: center;
 }
 
+.donate-btn {
+  text-decoration: none;
+  background-color: #0756B1;
+  color: #F8F3F5;
+  border-radius: 5%;
+  padding: 1%;
+  margin: 5%;
+}
+
+.donate-btn:hover {
+  background-color: #4EC4DE;
+  cursor: pointer;
+}
+
 .grid {
   display: flex;
   flex: 0 1 auto;

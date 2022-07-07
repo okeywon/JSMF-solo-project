@@ -1,0 +1,37 @@
+.application {
+    background-color: #D0CDCA;
+    width: 90%;
+    height: 80%;
+    margin: 2.5%;
+    padding: 2.5%;
+    box-shadow: 10px 5px 5px black;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: space-around;
+}
+
+.text-area {
+    padding: 5px;
+    margin: 5px;
+}
+
+.submit-btn {
+    background-color: #0756B1;
+    color: #F8F3F5;
+    box-shadow: 5px 5px 5px black;
+}
+
+.submit-btn:hover {
+    background-color: #4EC4DE;
+    cursor: pointer;
+}
+
+h4{
+    margin: 1%;
+}
