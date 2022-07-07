@@ -36,7 +36,31 @@ const adminRouter = express.Router();
 });
 
  adminRouter.post('/admin', (req, res) => {
-  // POST route code here
+    console.log('in POST', req.body);
+
+  const sqlQuery = `
+    INSERT INTO application (name, email, phone, address, address2, about, whyYou, file, video)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+  const sqlParams = [
+    req.body.name,
+    req.body.email,
+    req.body.phone,
+    req.body.address,
+    req.body.address2,
+    req.body.about,
+    req.body.whyYou,
+    req.body.file,
+    req.body.video
+  ];
+  pool.query(sqlQuery, sqlParams)
+  .then((results) => {
+    console.log('POST is sending', results.rows);
+    res.sendStatus(201);
+  })
+  .catch((err) => {
+    console.log('error in post router', err);
+    res.sendStatus(500);
+  })
 });
 
 module.exports = adminRouter;

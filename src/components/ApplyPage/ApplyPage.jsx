@@ -5,18 +5,37 @@ import '../ApplyPage/ApplyPage.css'
 
 function Application() {
 
+    const newApplication = (evt) => {
+        evt.preventDefault();
+
+        dispatchEvent({
+            type: 'ADD_APP',
+            payload: {
+                name,
+                email,
+                phone,
+                address,
+                address2,
+                about,
+                whyYou,
+                file,
+                video: url
+            }
+        });
+    }
+
     return (
         <div className="application">
             <h4>Apply Here:</h4>
             <Formik
-                initialValues={{fullName: '', email: '', phone: '', streetAddress: '', cityStateZip: '', about: '', whyYou: ''}}
+                initialValues={{name: '', email: '', phone: '', address: '', address2: '', about: '', whyYou: ''}}
                 validate={values => {
                     const errors = {};
-                    if (!values.fullName) {
-                        errors.fullName = 'Required';
+                    if (!values.name) {
+                        errors.name = 'Required';
                     }
                     if (!values.email) {
-                        errors.fullName = 'Required';
+                        errors.name = 'Required';
                     } else if (
                         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                     ) {
@@ -25,11 +44,11 @@ function Application() {
                     if (!values.phone) {
                         errors.phone = 'Required';
                     }
-                    if (!values.streetAddress) {
-                        errors.streetAddress = 'Required';
+                    if (!values.address) {
+                        errors.address = 'Required';
                     }
-                    if (!values.cityStateZip) {
-                        errors.cityStateZip = 'Required';
+                    if (!values.address2) {
+                        errors.address2 = 'Required';
                     }
                     if (!values.about) {
                         errors.about = 'Required';
@@ -50,22 +69,18 @@ function Application() {
                 values,
                 errors,
                 touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting,
-                /* and other goodies */
+                handleChange
             }) => (
-                <form>
+                <form onSubmit={(newApplication)}>
                     <input 
                         className="input"
-                        type="fullName"
-                        name="fullName"
+                        type="name"
+                        name="name"
                         placeholder="Full Name"
                         onChange={handleChange}
-                        value={values.fullName}
+                        value={values.name}
                     />
-                    {errors.fullName && touched.fullName && errors.fullName}
+                    {errors.name && touched.name && errors.name}
                     <input
                         className="input"
                         type="email"
@@ -86,22 +101,22 @@ function Application() {
                     {errors.phone && touched.phone && errors.phone}
                     <input
                         className="input"
-                        type="streetAddress"
-                        name="streetAddress"
+                        type="address"
+                        name="address"
                         placeholder="Street Address"
                         onChange={handleChange}
-                        value={values.streetAddress}
+                        value={values.address}
                     />
-                    {errors.streetAddress && touched.streetAddress && errors.streetAddress}
+                    {errors.address && touched.address && errors.address}
                     <input
                         className="input"
-                        type="cityStateZip"
-                        name="cityStateZip"
+                        type="address2"
+                        name="address2"
                         placeholder="City, State, Zip"
                         onChange={handleChange}
-                        value={values.cityStateZip}
+                        value={values.address2}
                     />
-                    {errors.cityStateZip && touched.cityStateZip && errors.cityStateZip}
+                    {errors.address2 && touched.address2 && errors.address2}
                     <TextareaAutosize
                         className="input text-area"
                         type="about"
