@@ -63,4 +63,25 @@ const adminRouter = express.Router();
   })
 });
 
+adminRouter.put('/:applicationID', (req, res) => {
+  console.log('in PUT', req.body.status, req.params.applicationID);
+  const sqlQuery = `
+    UPDATE application
+    SET status = $1
+    WHERE id = $2`;
+  const sqlParams = [
+    req.body.status,
+    req.params.applicationID
+  ];
+  pool.query(sqlQuery, sqlParams)
+  .then((results) => {
+    console.log('PUT is updating', results.rows);
+    res.sendStatus(201);
+  })
+  .catch((err) => {
+    console.log('error in PUT router', err);
+    res.sendStatus(500);
+  })
+});
+
 module.exports = adminRouter;

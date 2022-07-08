@@ -22,7 +22,6 @@ function AdminPage() {
   const admin = useSelector(store => store.admin);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [select, setSelect] = useState('Pending');
 
   useEffect(() => {
     dispatch({ 
@@ -55,16 +54,6 @@ function AdminPage() {
     },
   }));
 
-  const handleEvent = (evt) => {
-    setSelect(evt.target.value);
-
-    dispatch({
-      type: 'ADD_STATUS',
-      payload: select
-    });
-    console.log(select);
-  }
-
   return (
     <div>
     <TableContainer component={Paper} className="table">
@@ -94,16 +83,26 @@ function AdminPage() {
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                   <InputLabel id="table-drop-down">Select</InputLabel>
                   <Select
+                    appid={app.id}
                     labelId="status-select"
                     id="status-select"
                     value={app.status}
-                    onChange={handleEvent}
+                    onChange={(evt) => {
+                      let anything=evt.target.value;
+                      let applicationID = app.id
+                      dispatch({
+                        type: 'ADD_STATUS',
+                        payload: {anything,
+                          applicationID
+                        }
+                      });
+                    }}
                     label="Status"
                   >
-                    <MenuItem value={'pending'}>Pending</MenuItem>
-                    <MenuItem value={'selected'}>Selected</MenuItem>
-                    <MenuItem value={'awarded'}>Awarded</MenuItem>
-                    <MenuItem value={'denied'}>Denied</MenuItem>
+                    <MenuItem value='pending'>Pending</MenuItem>
+                    <MenuItem value='selected'>Selected</MenuItem>
+                    <MenuItem value='awarded'>Awarded</MenuItem>
+                    <MenuItem value='denied'>Denied</MenuItem>
                   </Select>
                 </FormControl>
               </StyledTableCell>

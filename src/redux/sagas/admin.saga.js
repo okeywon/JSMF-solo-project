@@ -4,7 +4,6 @@ import axios from 'axios';
 function* fetchAdmin() {
     try {
       const res = yield axios.get('/api/admin');
-      console.log(">>>>>>>>>>>>Saga", res);
       yield put({ type: 'SET_ADMIN', payload: res.data });
     } catch (err) {
       console.log('Admin list get request failed', err);
@@ -12,7 +11,7 @@ function* fetchAdmin() {
   }
 
 function* addApp(action) {
-  console.log("Adding an application, it reached admin.saga >>>>>>>>>>>>>", action)
+  console.log("Adding an application, it reached admin.saga", action)
   try {
     yield axios.post('/api/admin', action.payload);
   }
@@ -24,9 +23,9 @@ function* addApp(action) {
 }
 
 function* addStatus(action) {
-  console.log("Adding a Status, reached admin.saga >>>>>>>>>>>>>", action)
+  console.log("Adding a Status, reached admin.saga", action)
   try {
-    yield axios.put('/api/admin/:id', action.payload);
+    yield axios.put('/api/admin/'+ action.payload.applicationID, {status: action.payload.anything});
   }
   catch (err) {
       console.log('Error in POST saga', err);
