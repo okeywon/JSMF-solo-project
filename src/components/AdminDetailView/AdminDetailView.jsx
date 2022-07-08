@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+// import TextareaAutosize from '@mui/material/TextareaAutosize';
 import './AdminDetailView.css'
 
 function adminDetailView() {
@@ -18,7 +19,7 @@ function adminDetailView() {
     }, [params.id]);
 
     return (
-        <div className="float-Detail">
+        <div className="float-Container">
             <h3>Application</h3>
             <div className="float-infoLeft">
                 <h4>Name: {application.name}</h4>
@@ -32,6 +33,19 @@ function adminDetailView() {
                 <h4>Why are you the best applicant? {application.whyYou}</h4>
                 <h4>File Uploaded: {application.file}</h4>
                 <h4>Applicant Video: {application.video}</h4>
+            </div>
+            <div>
+            {/* <TextareaAutosize
+                        className="input text-area"
+                        type="comment"
+                        name="comment"
+                        maxRows={8}
+                        aria-label="maximum height"
+                        placeholder="Comment..."
+                        style={{ width: 200 }}
+                        onChange={(evt) => anything=evt.target.value}
+                        value={comment.comment}
+                    /> */}
             </div>
         </div>
     )
