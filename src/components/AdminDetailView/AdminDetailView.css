@@ -1,0 +1,18 @@
+.float-Detail {
+    background-color: #D0CDCA;
+    width: 90%;
+    height: 80%;
+    margin: 2.5%;
+    padding: 2.5%;
+    box-shadow: 10px 5px 5px black;
+}
+
+.float-infoLeft {
+    width: 50%;
+    float: left;
+}
+
+.float-infoRight {
+    width: 50%;
+    float: right;
+}
