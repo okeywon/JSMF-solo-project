@@ -22,10 +22,23 @@ function* addApp(action) {
   }
   yield put({type: 'FETCH_ADMIN'});
 }
+
+function* addStatus(action) {
+  console.log("Adding a Status, reached admin.saga >>>>>>>>>>>>>", action)
+  try {
+    yield axios.put('/api/admin/:id', action.payload);
+  }
+  catch (err) {
+      console.log('Error in POST saga', err);
+      return;
+  }
+  yield put({type: 'FETCH_ADMIN'});
+}
   
 function* adminSaga() {
   yield takeLatest('FETCH_ADMIN', fetchAdmin);
   yield takeLatest('ADD_APP', addApp);
+  yield takeLatest('ADD_STATUS', addStatus);
 }
   
   export default adminSaga;

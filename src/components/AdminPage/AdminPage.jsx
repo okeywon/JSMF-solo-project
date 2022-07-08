@@ -22,7 +22,7 @@ function AdminPage() {
   const admin = useSelector(store => store.admin);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [select, setSelect] = useState({status: ''});
+  const [select, setSelect] = useState('Pending');
 
   useEffect(() => {
     dispatch({ 
@@ -55,7 +55,18 @@ function AdminPage() {
     },
   }));
 
+  const handleEvent = (evt) => {
+    setSelect(evt.target.value);
+
+    dispatch({
+      type: 'ADD_STATUS',
+      payload: select
+    });
+    console.log(select);
+  }
+
   return (
+    <div>
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -85,14 +96,14 @@ function AdminPage() {
                   <Select
                     labelId="status-select"
                     id="status-select"
-                    value={select.status}
-                    onChange={(evt)=>setStatus({...select, status: evt.target.value})}
+                    value={app.status}
+                    onChange={handleEvent}
                     label="Status"
                   >
-                    <MenuItem>Pending</MenuItem>
-                    <MenuItem>Selected</MenuItem>
-                    <MenuItem>Awarded</MenuItem>
-                    <MenuItem>Denied</MenuItem>
+                    <MenuItem value={'pending'}>Pending</MenuItem>
+                    <MenuItem value={'selected'}>Selected</MenuItem>
+                    <MenuItem value={'awarded'}>Awarded</MenuItem>
+                    <MenuItem value={'denied'}>Denied</MenuItem>
                   </Select>
                 </FormControl>
               </StyledTableCell>
@@ -114,6 +125,7 @@ function AdminPage() {
         </TableBody>
       </Table>
     </TableContainer>
+</div>
   );
 }
 

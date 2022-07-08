@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 function adminDetailView() {
     const dispatch = useDispatch();
     const params = useParams();
-    const application = useSelector(store => store.application);
+    const application = useSelector(store => store.detail);
     console.log('in admin detail view', application);
 
     useEffect(() => {
