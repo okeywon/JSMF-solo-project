@@ -19,6 +19,7 @@ function adminDetailView() {
     }, [params.id]);
 
     return (
+
         <div className="float-Container">
             <h3>Application</h3>
             <div className="float-infoLeft">
@@ -27,12 +28,12 @@ function adminDetailView() {
                 <h4>Phone: {application.phone}</h4>
                 <h4>Address: {application.address}{application.address2}</h4>
                 <h4>Email: {application.email}</h4>
+                <h4>File Uploaded: {application.file}</h4>
+                <h4>Applicant Video: {application.video}</h4>
             </div>
             <div className="float-infoRight">
                 <h4>About Applicant: {application.about}</h4>
                 <h4>Why are you the best applicant? {application.whyYou}</h4>
-                <h4>File Uploaded: {application.file}</h4>
-                <h4>Applicant Video: {application.video}</h4>
             </div>
             <div>
             {/* <TextareaAutosize
@@ -47,7 +48,8 @@ function adminDetailView() {
                         value={comment.comment}
                     /> */}
             </div>
-        </div>
+        </div>            
+
     )
 }
 
