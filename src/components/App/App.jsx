@@ -5,14 +5,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import AdminPage from '../AdminPage/AdminPage';
@@ -23,8 +19,14 @@ import DetailPage from '../AdminDetailView/AdminDetailView';
 import DonatePage from '../DonationPage/DonationPage';
 import ContactPage from '../ContactPage/ContactPage';
 import Application from '../ApplyPage/ApplyPage';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 import './App.css';
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_51LGqe5B33WMXzL0LydhqCqp2ybjBDzDaRpYxleitAJLkvVI6HIOoAgYw2q9ePOWeH7JPsxGmpNdpMtsB8bfxdMDx00hV6j1YaG');
 
 function App() {
   const dispatch = useDispatch();
@@ -57,7 +59,9 @@ function App() {
             exact
             path="/donate"
           >
-            <DonatePage />
+            <Elements stripe={stripePromise}>
+              <DonatePage />
+            </Elements>
           </Route>
 
           <Route
