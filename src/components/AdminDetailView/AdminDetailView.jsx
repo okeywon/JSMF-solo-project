@@ -29,7 +29,16 @@ function adminDetailView() {
                 <h4>Address: {application.address}{application.address2}</h4>
                 <h4>Email: {application.email}</h4>
                 <h4>File Uploaded: {application.file}</h4>
-                <h4>Applicant Video: {application.video}</h4>
+                <h4 className="video-responsive">Applicant Video:<iframe
+                    width="200"
+                    height="150"
+                    src={application.video+'&output=embed'}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="Applicant Video"
+                    />
+                </h4>
             </div>
             <div className="float-infoRight">
                 <h4>About Applicant: {application.about}</h4>
@@ -37,7 +46,7 @@ function adminDetailView() {
             </div>
             <div>
             {/* <TextareaAutosize
-                        className="input text-area"
+                        className="input comment"
                         type="comment"
                         name="comment"
                         maxRows={8}
