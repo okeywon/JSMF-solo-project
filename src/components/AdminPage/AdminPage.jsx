@@ -126,7 +126,12 @@ function AdminPage() {
                 </Link>
               </StyledTableCell>
               <StyledTableCell>
-                <button className="delete-btn">
+                <button className="delete-btn" onClick={()=>{
+                  dispatch({
+                    type: "DELETE_APP",
+                    payload: app,
+                  })
+                }}>
                   <img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/>
                   Delete
                 </button>

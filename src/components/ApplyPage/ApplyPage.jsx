@@ -3,16 +3,19 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { Formik } from "formik";
+// import {AdvancedImage} from '@cloudinary/react';
+// import {URLConfig} from "@cloudinary/url-gen";
+// import {CloudConfig} from "@cloudinary/url-gen";
 import '../ApplyPage/ApplyPage.css'
 
 function Application() {
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''})
+    const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
     const [previewSource, setPreviewSource] = useState();
 
     const newApplication = (evt) => {
         evt.preventDefault();
-        if (!previewSource) return;
+        if (!formData.file) return;
         uploadFile(previewSource);
 
         dispatch({
@@ -34,7 +37,7 @@ function Application() {
             })
         }
         catch(err) {
-            console.log('error in cloudify upload on applyPage', err);
+            console.log('error in cloudinary upload on applyPage', err);
         }
     }
 
@@ -46,9 +49,11 @@ function Application() {
 
     const previewFile = (file) => {
         const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setPreviewSource(reader.result);
+        if (file) {
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                setPreviewSource(reader.result);
+            }
         }
     }
 
@@ -169,7 +174,7 @@ function Application() {
                     {errors.whyYou && touched.whyYou && errors.whyYou}
                     <input
                         className="input"
-                        action="/admin"
+                        action="/upload"
                         type="file"
                         name="essay"
                         onChange={(evt) => handleFile(evt)}
@@ -186,13 +191,15 @@ function Application() {
                 </form>
                 )}
             </Formik>
+            <div>
                 {previewSource && (
                     <img
                         src={previewSource}
-                        alt="chosen"
+                        alt="Uploaded-File"
                         style={{height: '300px'}}
-                        />
+                    />
                 )}
+            </div>
         </div>
     );
 }

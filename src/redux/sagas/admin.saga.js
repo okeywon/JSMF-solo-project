@@ -33,11 +33,24 @@ function* addStatus(action) {
   }
   yield put({type: 'FETCH_ADMIN'});
 }
+
+function* deleteApp(action) {
+  try{
+    const response = yield axios.delete(`/api/admin/${action.payload.id}`);
+    console.log("this is the delete response", response);
+  }
+  catch(err) {
+    console.log("Error in saga delete", err);
+    return;
+  }
+  yield put({type: "FETCH_ADMIN"});
+}
   
 function* adminSaga() {
   yield takeLatest('FETCH_ADMIN', fetchAdmin);
   yield takeLatest('ADD_APP', addApp);
   yield takeLatest('ADD_STATUS', addStatus);
+  yield takeLatest("DELETE_APP", deleteApp);
 }
   
   export default adminSaga;

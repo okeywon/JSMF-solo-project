@@ -1,8 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const adminRouter = express.Router();
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+// const multer  = require('multer');
+// const upload = multer({ dest: 'uploads/' });
 
  adminRouter.get('/', (req, res) => {
   // GET route code here
@@ -132,6 +132,31 @@ adminRouter.get('/:id', (req, res) => {
         .catch((err) => {
             console.log('GET failed in admin router', err);
         });
+});
+
+adminRouter.delete('/:id', (req, res) => {
+  const applicationID = req.params.id
+
+  // Construct the SQL Query that will delete the selected item
+  // if the user has proper permissions
+  const sqlQuery = `
+    DELETE FROM application
+    WHERE application.id = $1;`
+
+  const sqlParams = [
+    applicationID,
+  ]
+
+  pool.query(sqlQuery, sqlParams)
+  .then(response => {
+    console.log(response.rows, "This was the response")
+      // Send a 200 response indicating a row was deleted
+      res.sendStatus(200)
+  })
+  .catch(err => {
+    console.log(`Error in the server DELETE route with ${err}`);
+    res.sendStatus(500);
+  })
 });
 
 module.exports = adminRouter;

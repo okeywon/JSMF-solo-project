@@ -21,6 +21,11 @@ import ContactPage from '../ContactPage/ContactPage';
 import Application from '../ApplyPage/ApplyPage';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import {AdvancedImage} from '@cloudinary/react';
+import {CloudinaryImage} from "@cloudinary/url-gen";
+import {URLConfig} from "@cloudinary/url-gen";
+import {Cloudinary} from "@cloudinary/url-gen";
+import {CloudConfig} from "@cloudinary/url-gen";
 
 import './App.css';
 
@@ -30,12 +35,15 @@ const stripePromise = loadStripe('pk_test_51LGqe5B33WMXzL0LydhqCqp2ybjBDzDaRpYxl
 
 function App() {
   const dispatch = useDispatch();
-
   const user = useSelector(store => store.user);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
+
+  let cloudConfig = new CloudConfig({cloudName: 'demo'});
+  let urlConfig = new URLConfig({secure: true});
+  let myImage = new CloudinaryImage('docs/shoes', cloudConfig, urlConfig);
 
   return (
     <Router>
@@ -69,7 +77,7 @@ function App() {
             exact
             path="/apply"
           >
-            <Application />
+            <Application cldImage={myImage} />
           </Route>
 
           <Route
