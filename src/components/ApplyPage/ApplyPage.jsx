@@ -8,9 +8,12 @@ import '../ApplyPage/ApplyPage.css'
 function Application() {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''})
+    const [previewSource, setPreviewSource] = useState();
 
     const newApplication = (evt) => {
         evt.preventDefault();
+        if (!previewSource) return;
+        uploadFile(previewSource);
 
         dispatch({
             type: 'ADD_APP',
@@ -19,6 +22,34 @@ function Application() {
             }
         });
         setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
+    }
+
+    const uploadFile = async (file) => {
+        console.log(file);
+        try{
+            await fetch('/api/upload', {
+                method: 'POST',
+                body: JSON.stringify({data: file}),
+                header: {'Content-type': 'application/json'}
+            })
+        }
+        catch(err) {
+            console.log('error in cloudify upload on applyPage', err);
+        }
+    }
+
+    const handleFile = (evt) => {
+        setFormData({...formData, file: evt.target.value});
+        const file = evt.target.files[0];
+        previewFile(file);
+    }
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        }
     }
 
     return (
@@ -63,11 +94,9 @@ function Application() {
                   }}
             >
                 {({
-                values,
                 errors,
                 touched,
-                handleChange
-            }) => (
+                }) => (
                 <form onSubmit={(newApplication)}>
                     <input 
                         className="input"
@@ -141,11 +170,9 @@ function Application() {
                     <input
                         className="input"
                         action="/admin"
-                        method="post"
-                        encType="multipart/form-data"
                         type="file"
                         name="essay"
-                        onChange={(evt) => setFormData({...formData, file: evt.target.value})}
+                        onChange={(evt) => handleFile(evt)}
                         value={formData.file}
                     />
                     <input
@@ -157,8 +184,15 @@ function Application() {
                     />
                     <input className="submit-btn" type="submit"/>
                 </form>
-            )}
+                )}
             </Formik>
+                {previewSource && (
+                    <img
+                        src={previewSource}
+                        alt="chosen"
+                        style={{height: '300px'}}
+                        />
+                )}
         </div>
     );
 }

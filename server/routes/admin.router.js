@@ -37,7 +37,7 @@ const upload = multer({ dest: 'uploads/' });
         });
 });
 
- adminRouter.post ('/', upload.single('essay'), (req, res) => {
+ adminRouter.post ('/', (req, res) => {
     console.log('in POST', req.body);
 
   const sqlQuery = `
@@ -64,6 +64,21 @@ const upload = multer({ dest: 'uploads/' });
     res.sendStatus(500);
   })
 });
+
+adminRouter.post('/api/upload', async (req, res)=>{
+  try{
+    const fileStr = req.body.data;
+    const uploadedResponse = await cloudinary.uploader.
+    upload(fileStr, {
+      upload_preset: 'dev_setups'
+    })
+    console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadResponse);
+    res.json({msg: 'YAY'})
+  }catch(err){
+    console.log(err);
+    res.status(500).json({err: 'Something failed in file upload'})
+  }
+})
 
 adminRouter.put('/:applicationID', (req, res) => {
   console.log('in PUT', req.body.status, req.params.applicationID);
