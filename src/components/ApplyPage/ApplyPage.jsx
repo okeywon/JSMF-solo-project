@@ -140,7 +140,11 @@ function Application() {
                     {errors.whyYou && touched.whyYou && errors.whyYou}
                     <input
                         className="input"
+                        action="/admin"
+                        method="post"
+                        encType="multipart/form-data"
                         type="file"
+                        name="essay"
                         onChange={(evt) => setFormData({...formData, file: evt.target.value})}
                         value={formData.file}
                     />

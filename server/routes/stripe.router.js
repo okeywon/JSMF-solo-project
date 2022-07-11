@@ -5,7 +5,7 @@ const stripeRouter = express.Router();
 const stripe = require('stripe')('sk_test_51LGqe5B33WMXzL0L8hfF4To9JilzqeN1SPcclSVl7XzkwOrEsbFwjfjPTbYlFKGgrKWzOQOWbKlh6qKiqobbJkHw00MFaY4ff6');
 const YOUR_DOMAIN = 'http://localhost:3000';
 
-app.post('/create-checkout-session', async (req, res) => {
+stripeRouter.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {

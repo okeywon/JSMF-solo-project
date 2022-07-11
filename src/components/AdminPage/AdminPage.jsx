@@ -117,8 +117,20 @@ function AdminPage() {
               <StyledTableCell>{app.video}</StyledTableCell>
               <StyledTableCell>{app.comment}</StyledTableCell>
               <StyledTableCell>{app.vote}</StyledTableCell>
-              <StyledTableCell><Link to={`/admin/${app.id}`}><button className="edit-btn" onClick={()=>editApp(app.id)}><img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/>Edit</button></Link></StyledTableCell>
-              <StyledTableCell><button className="delete-btn"><img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/>Delete</button></StyledTableCell>
+              <StyledTableCell>
+                <Link to={`/admin/${app.id}`}>
+                  <button className="edit-btn" onClick={()=>editApp(app.id)}>
+                    <img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/>
+                    Edit
+                  </button>
+                </Link>
+              </StyledTableCell>
+              <StyledTableCell>
+                <button className="delete-btn">
+                  <img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/>
+                  Delete
+                </button>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

@@ -1,6 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const adminRouter = express.Router();
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
  adminRouter.get('/', (req, res) => {
   // GET route code here
@@ -35,7 +37,7 @@ const adminRouter = express.Router();
         });
 });
 
- adminRouter.post('/', (req, res) => {
+ adminRouter.post ('/', upload.single('essay'), (req, res) => {
     console.log('in POST', req.body);
 
   const sqlQuery = `
@@ -116,6 +118,5 @@ adminRouter.get('/:id', (req, res) => {
             console.log('GET failed in admin router', err);
         });
 });
-
 
 module.exports = adminRouter;
