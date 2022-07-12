@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { useSelector , useDispatch} from 'react-redux';
 import { useParams } from 'react-router-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
 import './AdminDetailView.css'
 
 function adminDetailView() {
@@ -50,11 +52,11 @@ function adminDetailView() {
                 <h4>Why are you the best applicant? {application.whyYou}</h4>
             </div>
             <div>
-                <ul>
+                <ol>
                 {comment && comment.map((note) => (
                     <li>{note}</li>
                 ))}
-                </ul>
+                </ol>
                 <TextareaAutosize
                     className="input comment"
                     type="comment"
@@ -73,6 +75,11 @@ function adminDetailView() {
                 >
                 OK
                 </button>
+            </div>
+            <div>
+                <p>Would you like to vote for this candidate?</p>
+                <p>Yes<ThumbUpAltRoundedIcon/></p>
+                <p>No<ThumbDownRoundedIcon/></p>
             </div>
         </div>            
     )
