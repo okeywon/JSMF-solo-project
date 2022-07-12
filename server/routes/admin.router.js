@@ -21,11 +21,8 @@ const adminRouter = express.Router();
         application."whyYou",
         application.file,
         application.video,
-        comment.comment,
         vote.vote
     FROM application
-    LEFT JOIN comment
-        on application.id = comment.application_id
     LEFT JOIN vote
         on application.id = vote.application_id
     ORDER BY application.id;`
@@ -69,24 +66,24 @@ const adminRouter = express.Router();
 });
 
 // POST to upload a file using cloudinary uploader - NOT working currently
-adminRouter.post('/api/upload', async (req, res)=>{
-  try{
-    const fileStr = req.body.data;
-    const uploadedResponse = await cloudinary.uploader.
-    upload(fileStr, {
-      upload_preset: 'dev_setups'
-    })
-    console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadResponse);
-    res.json({msg: 'YAY'})
-  }catch(err){
-    console.log(err);
-    res.status(500).json({err: 'Something failed in file upload'})
-  }
-})
+// adminRouter.post('/api/upload', async (req, res)=>{
+//   try{
+//     const fileStr = req.body.data;
+//     const uploadedResponse = await cloudinary.uploader.
+//     upload(fileStr, {
+//       upload_preset: 'dev_setups'
+//     })
+//     console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadResponse);
+//     res.json({msg: 'YAY'})
+//   }catch(err){
+//     console.log(err);
+//     res.status(500).json({err: 'Something failed in file upload'})
+//   }
+// })
 
 // PUT route to update the status on the Admin Page list view
 adminRouter.put('/:applicationID', (req, res) => {
-  console.log('in PUT', req.body.status, req.params.applicationID);
+  // console.log('in PUT', req.body.status, req.params.applicationID);
   const sqlQuery = `
     UPDATE application
     SET status = $1
@@ -108,36 +105,36 @@ adminRouter.put('/:applicationID', (req, res) => {
 
 // GET request for detail view on Admin Detail Page
 adminRouter.get('/:id', (req, res) => {
-  // GET route code here
   const sqlQuery = `
     SELECT
-        application.id,
-        application.status,
-        application.name,
-        application.email,
-        application.phone,
-        application.address,
-        application.address2,
-        application.about,
-        application."whyYou",
-        application.file,
-        application.video,
-        comment.comment,
-        vote.vote
+      application.id,
+      application.status,
+      application.name,
+      application.email,
+      application.phone,
+      application.address,
+      application.address2,
+      application.about,
+      application."whyYou",
+      application.file,
+      application.video,
+      json_agg(comment.comment) as comments,
+      vote.vote
     FROM application
     LEFT JOIN comment
-        on application.id = comment.application_id
+      on application.id = comment.application_id
     LEFT JOIN vote
-        on application.id = vote.application_id
-    WHERE application.id = $1;`
-    pool.query(sqlQuery, [req.params.id])
-        .then((results) => {
-            // console.log("router side >>>>>>>>>>", results);
-            res.send(results.rows[0])
-        })
-        .catch((err) => {
-            console.log('GET failed in admin router', err);
-        });
+      on application.id = vote.application_id
+    WHERE application.id = $1
+    GROUP BY application.id, vote.vote;`
+  pool.query(sqlQuery, [req.params.id])
+      .then((results) => {
+          console.log("router side details being sent >>>>>>>>>>", results);
+          res.send(results.rows[0]);
+      })
+      .catch((err) => {
+          console.log('GET failed in admin router', err);
+      });
 });
 
 // Delete route to remove an application from the Admin Page
@@ -164,6 +161,27 @@ adminRouter.delete('/:id', (req, res) => {
     console.log(`Error in the server DELETE route with ${err}`);
     res.sendStatus(500);
   })
+});
+
+adminRouter.post ('/:id', (req, res) => {
+  // console.log('in comment POST>>>>>>>>>>>>>>>>', req.body);
+const sqlQuery = `
+  INSERT INTO comment (user_id, application_id, comment)
+  VALUES ($1, $2, $3)`;
+const sqlParams = [
+  req.user.id,
+  req.body.appID,
+  req.body.newComment,
+];
+pool.query(sqlQuery, sqlParams)
+.then((results) => {
+  console.log('POST is sending', results.rows);
+  res.sendStatus(201);
+})
+.catch((err) => {
+  console.log('error in post router', err);
+  res.sendStatus(500);
+})
 });
 
 module.exports = adminRouter;

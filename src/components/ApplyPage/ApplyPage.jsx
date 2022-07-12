@@ -3,20 +3,14 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { Formik } from "formik";
-// import {AdvancedImage} from '@cloudinary/react';
-// import {URLConfig} from "@cloudinary/url-gen";
-// import {CloudConfig} from "@cloudinary/url-gen";
 import '../ApplyPage/ApplyPage.css'
 
 function Application() {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
-    const [previewSource, setPreviewSource] = useState();
 
     const newApplication = (evt) => {
         evt.preventDefault();
-        if (!formData.file) return;
-        uploadFile(previewSource);
 
         dispatch({
             type: 'ADD_APP',
@@ -25,36 +19,6 @@ function Application() {
             }
         });
         setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
-    }
-
-    const uploadFile = async (file) => {
-        console.log(file);
-        try{
-            await fetch('/api/upload', {
-                method: 'POST',
-                body: JSON.stringify({data: file}),
-                header: {'Content-type': 'application/json'}
-            })
-        }
-        catch(err) {
-            console.log('error in cloudinary upload on applyPage', err);
-        }
-    }
-
-    const handleFile = (evt) => {
-        setFormData({...formData, file: evt.target.value});
-        const file = evt.target.files[0];
-        previewFile(file);
-    }
-
-    const previewFile = (file) => {
-        const reader = new FileReader();
-        if (file) {
-            reader.readAsDataURL(file);
-            reader.onloadend = () => {
-                setPreviewSource(reader.result);
-            }
-        }
     }
 
     return (
@@ -177,7 +141,7 @@ function Application() {
                         action="/upload"
                         type="file"
                         name="essay"
-                        onChange={(evt) => handleFile(evt)}
+                        onChange={(evt) => setFormData({...formData, file: evt.target.value})}
                         value={formData.file}
                     />
                     <input
@@ -191,15 +155,6 @@ function Application() {
                 </form>
                 )}
             </Formik>
-            <div>
-                {previewSource && (
-                    <img
-                        src={previewSource}
-                        alt="Uploaded-File"
-                        style={{height: '300px'}}
-                    />
-                )}
-            </div>
         </div>
     );
 }

@@ -70,7 +70,6 @@ function AdminPage() {
             <StyledTableCell>Why You</StyledTableCell>
             <StyledTableCell>Essay File</StyledTableCell>
             <StyledTableCell>Video</StyledTableCell>
-            <StyledTableCell>Admin Notes</StyledTableCell>
             <StyledTableCell>Votes</StyledTableCell>
             <StyledTableCell>Edit</StyledTableCell>
             <StyledTableCell>Delete</StyledTableCell>
@@ -115,7 +114,6 @@ function AdminPage() {
               <StyledTableCell>{app.whyYou}</StyledTableCell>
               <StyledTableCell>{app.file}</StyledTableCell>
               <StyledTableCell>{app.video}</StyledTableCell>
-              <StyledTableCell>{app.comment}</StyledTableCell>
               <StyledTableCell>{app.vote}</StyledTableCell>
               <StyledTableCell>
                 <Link to={`/admin/${app.id}`}>

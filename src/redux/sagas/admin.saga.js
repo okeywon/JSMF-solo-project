@@ -11,7 +11,7 @@ function* fetchAdmin() {
   }
 
 function* addApp(action) {
-  console.log("Adding an application, it reached admin.saga", action)
+  // console.log("Adding an application, it reached admin.saga", action)
   try {
     yield axios.post('/api/admin', action.payload);
   }
@@ -23,7 +23,7 @@ function* addApp(action) {
 }
 
 function* addStatus(action) {
-  console.log("Adding a Status, reached admin.saga", action)
+  // console.log("Adding a Status, reached admin.saga", action)
   try {
     yield axios.put('/api/admin/'+ action.payload.applicationID, {status: action.payload.newStatus});
   }
@@ -34,22 +34,10 @@ function* addStatus(action) {
   yield put({type: 'FETCH_ADMIN'});
 }
 
-function* addComment(action) {
-  console.log("Adding a Status, reached admin.saga", action)
-  try {
-    yield axios.put('/api/admin/'+ action.payload.applicationID, {comment: action.payload.newComment});
-  }
-  catch (err) {
-      console.log('Error in POST saga', err);
-      return;
-  }
-  yield put({type: 'FETCH_DETAIL'});
-}
-
 function* deleteApp(action) {
   try{
     const response = yield axios.delete(`/api/admin/${action.payload.id}`);
-    console.log("this is the delete response", response);
+    // console.log("this is the delete response", response);
   }
   catch(err) {
     console.log("Error in saga delete", err);
@@ -63,7 +51,6 @@ function* adminSaga() {
   yield takeLatest('ADD_APP', addApp);
   yield takeLatest('ADD_STATUS', addStatus);
   yield takeLatest("DELETE_APP", deleteApp);
-  yield takeLatest('ADD_COMMENT', addComment);
 }
   
   export default adminSaga;
