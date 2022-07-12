@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
-import { purple } from '@mui/material/colors';
 import { blue } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './AdminDetailView.css'
@@ -15,6 +14,8 @@ function adminDetailView() {
     const params = useParams();
     const application = useSelector(store => store.detail);
     const comment = application.comments;
+    const [disableYes, setDisableYes] = useState(false);
+    const [disableNo, setDisableNo] = useState(false);
     const [newComment, setNewComment] = useState('');
     
     useEffect(() => {
@@ -60,7 +61,7 @@ function adminDetailView() {
         setNewComment('');
     }
 
-    const upVote = (evt) => {
+    const upVote = () => {
         console.log('clicked yes');
         let appID = application.id;
         dispatch({
@@ -69,9 +70,15 @@ function adminDetailView() {
         });
     }
 
-    const downVote = (evt) => {
+    const downVote = () => {
         console.log('clicked no');
-        
+        if (confirm("Are you sure you want to vote 'no'? This will disable voting options for this applicant.") == true) {
+            setDisableYes(true);
+            setDisableNo(true);
+            console.log(disableNo, disableYes);
+        } else {
+            return;
+        }
     }
 
     return (
@@ -120,10 +127,10 @@ function adminDetailView() {
             <div>
                 <p>Would you like to vote for this candidate?</p>
                 <ThemeProvider theme={theme}>
-                <p className="vote-btn yes" onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></p>
+                <p className="vote-btn yes" disabled={disableYes} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></p>
                 </ThemeProvider>
                 <ThemeProvider theme={theme2}>
-                <p className="vote-btn no" onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></p>
+                <p className="vote-btn no" disabled={disableNo} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></p>
                 </ThemeProvider>
             </div>
         </div>            
