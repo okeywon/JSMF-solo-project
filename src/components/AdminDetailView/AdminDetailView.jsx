@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
+import { purple } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './AdminDetailView.css'
 
 function adminDetailView() {
@@ -21,6 +24,30 @@ function adminDetailView() {
         });
     }, [params.id]);
 
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: blue[500]
+            },
+            secondary: {
+                main: '#0756b1',
+                darker: '#4EC4DE'
+            }
+        }
+    });
+
+    const theme2 = createTheme({
+        palette: {
+            primary: {
+                main: blue[500]
+            },
+            secondary: {
+                main: '#d0271b',
+                darker: '#a61f16'
+            }
+        }
+    });
+
     const addComment = () => {
         let appID = application.id;
         dispatch({
@@ -33,6 +60,19 @@ function adminDetailView() {
         setNewComment('');
     }
 
+    const upVote = (evt) => {
+        console.log('clicked yes');
+        let appID = application.id;
+        dispatch({
+            type: 'ADD_VOTE',
+            payload: appID
+        });
+    }
+
+    const downVote = (evt) => {
+        console.log('clicked no');
+        
+    }
 
     return (
 
@@ -69,6 +109,7 @@ function adminDetailView() {
                     onChange={(evt) => setNewComment(evt.target.value)}
                 />
                 <button
+                    className="ok-btn"
                     onClick={() => {
                         addComment(newComment)
                     }}
@@ -78,8 +119,12 @@ function adminDetailView() {
             </div>
             <div>
                 <p>Would you like to vote for this candidate?</p>
-                <p>Yes<ThumbUpAltRoundedIcon/></p>
-                <p>No<ThumbDownRoundedIcon/></p>
+                <ThemeProvider theme={theme}>
+                <p className="vote-btn yes" onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></p>
+                </ThemeProvider>
+                <ThemeProvider theme={theme2}>
+                <p className="vote-btn no" onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></p>
+                </ThemeProvider>
             </div>
         </div>            
     )

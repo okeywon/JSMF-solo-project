@@ -14,6 +14,8 @@ import Paper from '@mui/material/Paper';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import Select from '@mui/material/Select';
 
 import './AdminPage.css'
@@ -118,7 +120,7 @@ function AdminPage() {
               <StyledTableCell>
                 <Link to={`/admin/${app.id}`}>
                   <button className="edit-btn" onClick={()=>editApp(app.id)}>
-                    <img src="./images/edit-icon-pencil-sign-up-vector-185156202.jpeg"/>
+                    <EditRoundedIcon/>
                     Edit
                   </button>
                 </Link>
@@ -130,7 +132,7 @@ function AdminPage() {
                     payload: app,
                   })
                 }}>
-                  <img src="./images/0-5523_red-cross-clipart-not-check-box-with-x.png"/>
+                  <DeleteRoundedIcon/>
                   Delete
                 </button>
               </StyledTableCell>
