@@ -1,15 +1,16 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useSelector , useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector , useDispatch} from 'react-redux';
 import { useParams } from 'react-router-dom';
-// import TextareaAutosize from '@mui/material/TextareaAutosize';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 import './AdminDetailView.css'
 
 function adminDetailView() {
     const dispatch = useDispatch();
     const params = useParams();
     const application = useSelector(store => store.detail);
-    console.log('in admin detail view', application);
+    const comment = application.comment;
+    const [newComment, setNewComment] = useState();
 
     useEffect(() => {
         dispatch({
@@ -45,18 +46,29 @@ function adminDetailView() {
                 <h4>Why are you the best applicant? {application.whyYou}</h4>
             </div>
             <div>
-            {/* <TextareaAutosize
-                        className="input comment"
-                        type="comment"
-                        name="comment"
-                        maxRows={8}
-                        aria-label="maximum height"
-                        placeholder="Comment..."
-                        style={{ width: 200 }}
-                        onChange={(evt) => anything=evt.target.value}
-                        value={comment.comment}
-                    /> */}
+                <p>{comment}</p>
+                <TextareaAutosize
+                    className="input comment"
+                    type="comment"
+                    name="comment"
+                    maxRows={8}
+                    aria-label="maximum height"
+                    placeholder="Comment..."
+                    style={{ width: 200 }}
+                    onChange={() => {
+                        setNewComment(evt.target.value);
+                        let appID = application.id
+                        dispatch({
+                          type: 'ADD_COMMENT',
+                          payload: {newComment,
+                            appID
+                          }
+                        });
+                      }}
+                    value={newComment}
+                />
             </div>
+            <input type="submit" placeholder="OK"/>
         </div>            
 
     )

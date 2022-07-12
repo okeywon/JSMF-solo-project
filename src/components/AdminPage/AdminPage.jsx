@@ -88,11 +88,11 @@ function AdminPage() {
                     id="status-select"
                     value={app.status}
                     onChange={(evt) => {
-                      let anything=evt.target.value;
+                      let newStatus=evt.target.value;
                       let applicationID = app.id
                       dispatch({
                         type: 'ADD_STATUS',
-                        payload: {anything,
+                        payload: {newStatus,
                           applicationID
                         }
                       });

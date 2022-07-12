@@ -4,6 +4,8 @@ const adminRouter = express.Router();
 // const multer  = require('multer');
 // const upload = multer({ dest: 'uploads/' });
 
+
+// GET request for all data to display to Admin Page table(list view).
  adminRouter.get('/', (req, res) => {
   // GET route code here
   const sqlQuery = `
@@ -37,6 +39,7 @@ const adminRouter = express.Router();
         });
 });
 
+// POST route for user to input an application
  adminRouter.post ('/', (req, res) => {
     console.log('in POST', req.body);
 
@@ -65,6 +68,7 @@ const adminRouter = express.Router();
   })
 });
 
+// POST to upload a file using cloudinary uploader - NOT working currently
 adminRouter.post('/api/upload', async (req, res)=>{
   try{
     const fileStr = req.body.data;
@@ -80,6 +84,7 @@ adminRouter.post('/api/upload', async (req, res)=>{
   }
 })
 
+// PUT route to update the status on the Admin Page list view
 adminRouter.put('/:applicationID', (req, res) => {
   console.log('in PUT', req.body.status, req.params.applicationID);
   const sqlQuery = `
@@ -101,6 +106,7 @@ adminRouter.put('/:applicationID', (req, res) => {
   })
 });
 
+// GET request for detail view on Admin Detail Page
 adminRouter.get('/:id', (req, res) => {
   // GET route code here
   const sqlQuery = `
@@ -134,6 +140,7 @@ adminRouter.get('/:id', (req, res) => {
         });
 });
 
+// Delete route to remove an application from the Admin Page
 adminRouter.delete('/:id', (req, res) => {
   const applicationID = req.params.id
 
