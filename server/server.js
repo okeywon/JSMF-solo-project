@@ -18,6 +18,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const adminRouter = require('./routes/admin.router');
 const stripeRouter = require('./routes/stripe.router');
+const detailRouter = require('./routes/detail.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.use(express.urlencoded({limit: '50mb', extended: true}));
 app.use('/api/user', userRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/stripe', stripeRouter);
+app.use('/api/detail', detailRouter);
 
 // Serve static files
 app.use(express.static('build'));
