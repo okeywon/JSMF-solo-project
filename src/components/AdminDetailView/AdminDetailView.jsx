@@ -17,15 +17,7 @@ function adminDetailView() {
     const [disableYes, setDisableYes] = useState(false);
     const [disableNo, setDisableNo] = useState(false);
     const [newComment, setNewComment] = useState('');
-
-    let currentVote = application.vote;
-
-    const vote = (currentVote) => {
-        if(currentVote === 'null'){
-            currentVote = 0;
-        }
-        return currentVote;
-    }
+    const [vote, setVote] = useState(0);
 
     useEffect(() => {
         dispatch({
@@ -72,11 +64,11 @@ function adminDetailView() {
 
     const upVote = () => {
         console.log('clicked yes');
+        setVote(1);
         let appID = application.id;
-        let vote = 
         dispatch({
             type: 'ADD_VOTE',
-            payload: appID
+            payload: {appID, vote}
         });
     }
 
@@ -136,7 +128,7 @@ function adminDetailView() {
             </div>
             <div>
                 <p>Would you like to vote for this candidate?</p>
-                <p>Current Votes: {currentVote}</p>
+                <p>Current Votes: {vote}</p>
                 <ThemeProvider theme={theme}>
                 <p className="vote-btn yes" disabled={disableYes} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></p>
                 </ThemeProvider>
