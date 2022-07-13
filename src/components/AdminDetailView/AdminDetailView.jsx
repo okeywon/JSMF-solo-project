@@ -136,7 +136,7 @@ function adminDetailView() {
             </div>
             <div>
                 <p>Would you like to vote for this candidate?</p>
-                <p>Current Votes: {vote}</p>
+                <p>Current Votes: {currentVote}</p>
                 <ThemeProvider theme={theme}>
                 <p className="vote-btn yes" disabled={disableYes} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></p>
                 </ThemeProvider>

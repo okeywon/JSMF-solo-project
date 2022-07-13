@@ -186,13 +186,14 @@ adminRouter.post ('/:id', (req, res) => {
 
 adminRouter.post ('/:id', (req, res) => {
   console.log('in vote POST>>>>>>>>>>>>>>>>', req.body);
+  let newVote = Number(req.body.vote +1);
   const sqlQuery = `
     INSERT INTO vote (user_id, application_id, vote)
     VALUES ($1, $2, $3)`;
   const sqlParams = [
     req.user.id,
     req.body.appID,
-    req.body.vote,
+    newVote,
   ];
   pool.query(sqlQuery, sqlParams)
   .then((results) => {
