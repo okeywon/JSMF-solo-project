@@ -7,7 +7,7 @@ import '../ApplyPage/ApplyPage.css'
 
 function Application() {
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
+    const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''});
 
     const newApplication = (evt) => {
         evt.preventDefault();
@@ -18,7 +18,7 @@ function Application() {
                 formData
             }
         });
-        setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', url: ''});
+        setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''});
     }
 
     return (
