@@ -13,11 +13,12 @@ function adminDetailView() {
     const dispatch = useDispatch();
     const params = useParams();
     const application = useSelector(store => store.detail);
+    const vote = useSelector(store => store.vote);
     const comment = application.comments;
     const [disableYes, setDisableYes] = useState(false);
     const [disableNo, setDisableNo] = useState(false);
     const [newComment, setNewComment] = useState('');
-    const [vote, setVote] = useState(0);
+    const [newVote, setNewVote] = useState(0);
 
     useEffect(() => {
         dispatch({
@@ -64,11 +65,11 @@ function adminDetailView() {
 
     const upVote = () => {
         console.log('clicked yes');
-        setVote(1);
+        setNewVote(1);
         let appID = application.id;
         dispatch({
             type: 'ADD_VOTE',
-            payload: {appID, vote}
+            payload: {appID, newVote: 1}
         });
     }
 

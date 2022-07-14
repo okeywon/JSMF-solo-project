@@ -19,6 +19,8 @@ const userRouter = require('./routes/user.router');
 const adminRouter = require('./routes/admin.router');
 const stripeRouter = require('./routes/stripe.router');
 const detailRouter = require('./routes/detail.router');
+const commentRouter = require('./routes/comment.router');
+const voteRouter = require('./routes/vote.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -40,6 +42,8 @@ app.use('/api/user', userRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/stripe', stripeRouter);
 app.use('/api/detail', detailRouter);
+app.use('/api/comment', commentRouter);
+app.use('/api/vote', voteRouter);
 
 // Serve static files
 app.use(express.static('build'));

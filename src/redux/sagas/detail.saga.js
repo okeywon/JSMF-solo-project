@@ -11,35 +11,9 @@ function* fetchDetail(action) {
     return;
   }
 }  
-
-function* addComment(action) {
-  // console.log("Adding a Comment, reached detail.saga", action);
-  try {
-    yield axios.post(`/api/admin/${action.payload.appID}`, action.payload);
-    yield put({type: 'FETCH_DETAIL', payload: action.payload.appID});
-  }
-  catch (err) {
-      console.log('Error in detail saga in addComment', err);
-      return;
-  }
-}
-
-function* addVote(action) {
-  console.log("Adding a Vote, reached detail.saga", action);
-  try {
-    yield axios.post(`/api/detail/${action.payload.appID}`, action.payload);
-    yield put({type: 'FETCH_DETAIL', payload: action.payload.appID});
-  }
-  catch (err) {
-      console.log('Error in detail saga in addVote', err);
-      return;
-  }
-}
   
 function* detailSaga() {
   yield takeLatest('FETCH_DETAIL', fetchDetail);
-  yield takeLatest('ADD_COMMENT', addComment);
-  yield takeLatest('ADD_VOTE', addVote);
 }
     
 export default detailSaga;
