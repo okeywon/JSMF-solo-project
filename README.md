@@ -1,12 +1,6 @@
 
 # Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Use the Template for This Repository (Don't Clone)
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
 
 
 ## Prerequisites
@@ -19,17 +13,7 @@ Before you get started, make sure you have the following software installed on y
 
 ## Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+Create a new database called `jsmf_app` and run the `database.sql` code in your terminal or postico.
 
 ## Development Setup Instructions
 
@@ -39,6 +23,10 @@ If you would like to name your database something else, you will need to change 
   SERVER_SESSION_SECRET=superDuperSecret
   ```
   While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
+
+- You will need the Cloudinary API keys to accept files from applicants.
+- You will need the Stripe API keys to accept payments (not currently in use).
+
 - Start postgres if not running already by using `brew services start postgresql`
 - Run `npm run server`
 - Run `npm run client`
@@ -89,6 +77,7 @@ Directory Structure:
 
 - `src/` contains the React application
 - `public/` contains static assets for the client-side
+  - `/public/uploads` contains the uploaded files from the applicant
 - `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
 - `server/` contains the Express App
 
@@ -98,10 +87,14 @@ This code is also heavily commented. We recommend reading through the comments, 
   - App/App
   - Footer/Footer
   - Nav/Nav
+  - ApplyPage/ApplyPage
   - AboutPage/AboutPage
-  - InfoPage/InfoPage
+  - AdminPage/AdminPage
   - UserPage/UserPage
   - LoginPage/LoginPage
+  - DetailPage/DetailPage
+  - DonatePage/DonatePage
+  - ContactPage/ContactPage
   - RegisterPage/RegisterPage
   - LogOutButton/LogOutButton
   - ProtectedRoute/ProtectedRoute
@@ -121,3 +114,5 @@ This code is also heavily commented. We recommend reading through the comments, 
 Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
 
 resources: https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2
+https://www.bacancytechnology.com/blog/file-upload-using-multer-with-nodejs-and-express
+StackOverflow
