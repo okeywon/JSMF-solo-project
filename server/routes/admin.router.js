@@ -2,8 +2,15 @@ const express = require('express');
 const pool = require('../modules/pool');
 const adminRouter = express.Router();
 const multer  = require('multer');
+const path = require('path');
 
-const storage = multer.diskStorage({});
+const storage = multer.diskStorage({
+  destination: './public/uploads',
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '_' + Date.now() 
+        + path.extname(file.originalname))
+    }
+});
 const upload = multer({ storage });
 
 // GET request for all data to display to Admin Page table(list view).
