@@ -4,6 +4,7 @@ import user from './user.reducer';
 import admin from './admin.reducer';
 import detail from './detail.reducer';
 import comment from './comment.reducer';
+import vote from './vote.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   admin,
   detail,
   comment,
+  vote,
 });
 
 export default rootReducer;

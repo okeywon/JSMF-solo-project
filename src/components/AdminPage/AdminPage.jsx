@@ -25,6 +25,8 @@ function AdminPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  console.log(">>>>>>><<<<<<<<<<", admin);
+
   useEffect(() => {
     dispatch({ 
       type: 'FETCH_ADMIN' 

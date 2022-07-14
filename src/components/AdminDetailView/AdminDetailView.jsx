@@ -7,19 +7,23 @@ import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
 import ThumbDownRoundedIcon from '@mui/icons-material/ThumbDownRounded';
 import { blue } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Moment from 'react-moment';
 import './AdminDetailView.css'
 
 function adminDetailView() {
     const dispatch = useDispatch();
     const params = useParams();
     const application = useSelector(store => store.detail);
+    const user = useSelector(store => store.user);
     const comment = application.comments;
-    const [disableYes, setDisableYes] = useState(false);
-    const [disableNo, setDisableNo] = useState(false);
+    const [disable, setDisable] = useState(false);
     const [newComment, setNewComment] = useState('');
-    const [vote, setVote] = useState(0);
+    const [newVote, setNewVote] = useState(0);
 
     useEffect(() => {
+        if(application.userVote === user.id){
+            setDisable(true);
+        }
         dispatch({
             type: 'FETCH_DETAIL',
             payload: Number(params.id)
@@ -64,20 +68,22 @@ function adminDetailView() {
 
     const upVote = () => {
         console.log('clicked yes');
-        setVote(1);
+        setNewVote(1);
         let appID = application.id;
         dispatch({
             type: 'ADD_VOTE',
-            payload: {appID, vote}
+            payload: {appID, newVote: 1}
         });
+        setDisable(true);
+        setDisable(true);
     }
 
     const downVote = () => {
         console.log('clicked no');
         if (confirm("Are you sure you want to vote 'no'? This will disable voting options for this applicant.") == true) {
-            setDisableYes(true);
-            setDisableNo(true);
-            console.log(disableNo, disableYes);
+            setDisable(true);
+            setDisable(true);
+            console.log(disable);
         } else {
             return;
         }
@@ -92,7 +98,6 @@ function adminDetailView() {
                 <h4>Email: {application.email}</h4>
                 <h4>Phone: {application.phone}</h4>
                 <h4>Address: {application.address}{application.address2}</h4>
-                <h4>Email: {application.email}</h4>
                 <h4>File Uploaded: {application.file}</h4>
                 <h4>Applicant Video: {application.video}</h4>
             </div>
@@ -101,11 +106,13 @@ function adminDetailView() {
                 <h4>Why are you the best applicant? {application.whyYou}</h4>
             </div>
             <div>
-                <ol>
+                
                 {comment && comment.map((note) => (
-                    <li>{note}</li>
+                    <ul key={note.id}>
+                        <li>Comment: {note.comment} by: {note.user_id} at: <Moment>{note.timeStamp}</Moment></li>
+                    </ul>
                 ))}
-                </ol>
+                
                 <TextareaAutosize
                     className="input comment"
                     type="comment"
@@ -128,12 +135,12 @@ function adminDetailView() {
             </div>
             <div>
                 <p>Would you like to vote for this candidate?</p>
-                <p>Current Votes: {vote}</p>
+                <p>Current Votes: {application.voteCount}</p>
                 <ThemeProvider theme={theme}>
-                <p className="vote-btn yes" disabled={disableYes} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></p>
+                <button className="vote-btn yes" disabled={disable} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></button>
                 </ThemeProvider>
                 <ThemeProvider theme={theme2}>
-                <p className="vote-btn no" disabled={disableNo} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></p>
+                <button className="vote-btn no" disabled={disable} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></button>
                 </ThemeProvider>
             </div>
         </div>            
