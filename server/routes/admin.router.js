@@ -8,32 +8,21 @@ const adminRouter = express.Router();
  adminRouter.get('/', (req, res) => {
   // GET route code here
   const sqlQuery = `
-  SELECT
-    application.id,
-    application.status,
-    application.name,
-    application.email,
-    application.phone,
-    application.address,
-    application.address2,
-    application.about,
-    application."whyYou",
-    application.file,
-    application.video,
-    SUM(vote.vote)
-  FROM application
-  LEFT JOIN vote
-    on application.id = vote.application_id
-  GROUP BY application.id
-  ORDER BY application.id;`
-    pool.query(sqlQuery)
-        .then((results) => {
-            // console.log("router side >>>>>>>>>>", results);
-            res.send(results.rows)
-        })
-        .catch((err) => {
-            console.log('GET failed in admin router', err);
-        });
+    SELECT
+      application.*,
+      coalesce(sum(vote.vote), 0) as "voteCount"
+    FROM application
+      LEFT JOIN vote ON vote.application_id = application.id
+    GROUP BY application.id
+    ORDER BY application.id;`
+  pool.query(sqlQuery)
+    .then((results) => {
+        // console.log("router side >>>>>>>>>>", results);
+        res.send(results.rows)
+    })
+    .catch((err) => {
+        console.log('GET failed in admin router', err);
+    });
 });
 
 // POST route for user to input an application

@@ -4,7 +4,6 @@ const voteRouter = express.Router();
 
 //POST route for a user to add a vote to an application
 voteRouter.post ('/:id', (req, res) => {
-
     const sqlQuery = `
       INSERT INTO vote (user_id, application_id, vote)
       VALUES ($1, $2, $3)`;
@@ -13,7 +12,7 @@ voteRouter.post ('/:id', (req, res) => {
       req.body.appID,
       req.body.newVote,
     ];
-    console.log('detailRouter vote POST>>>>>>>>>>>>>>>>', sqlParams);
+    console.log('voteRouter vote POST>>>>>>>>>>>>>>>>', sqlParams);
     pool.query(sqlQuery, sqlParams)
     .then((results) => {
       console.log('POST is sending', results.rows);
