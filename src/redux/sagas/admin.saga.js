@@ -13,7 +13,9 @@ function* fetchAdmin() {
 function* addApp(action) {
   // console.log("Adding an application, it reached admin.saga", action)
   let file = new FormData();
-  file.append("file", action.payload.formData.file)
+  file.append("formData", action.payload.formData);
+  file.append("file", action.payload.formData.file);
+  file.append("video", action.payload.formData.video);
   try {
     yield axios.post('/api/admin', file, {
       headers: {

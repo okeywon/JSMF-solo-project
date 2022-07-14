@@ -144,10 +144,9 @@ function Application() {
                     />
                     <input
                         className="input"
-                        type="url"
-                        placeholder="Video URL"
-                        onChange={(evt) => setFormData({...formData, video: evt.target.value})}
-                        value={formData.video}
+                        type="file"
+                        name="videoURL"
+                        onChange={(evt) => setFormData({...formData, video: evt.target.files[0]})}
                     />
                     <input className="submit-btn" type="submit"/>
                 </form>

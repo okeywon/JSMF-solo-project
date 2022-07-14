@@ -11,7 +11,16 @@ const storage = multer.diskStorage({
         + path.extname(file.originalname))
     }
 });
-const upload = multer({ storage });
+
+const videoStorage = multer.diskStorage({
+  destination: 'videos', // Destination to store video 
+  filename: (req, file, cb) => {
+      cb(null, file.fieldname + '_' + Date.now() 
+       + path.extname(file.originalname))
+  }
+});
+
+const upload = multer({ storage, videoStorage });
 
 // GET request for all data to display to Admin Page table(list view).
  adminRouter.get('/', (req, res) => {
