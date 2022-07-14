@@ -15,8 +15,7 @@ function adminDetailView() {
     const application = useSelector(store => store.detail);
     const vote = useSelector(store => store.vote);
     const comment = application.comments;
-    const [disableYes, setDisableYes] = useState(false);
-    const [disableNo, setDisableNo] = useState(false);
+    const [disable, setDisable] = useState(false);
     const [newComment, setNewComment] = useState('');
     const [newVote, setNewVote] = useState(0);
 
@@ -131,10 +130,10 @@ function adminDetailView() {
                 <p>Would you like to vote for this candidate?</p>
                 <p>Current Votes: {vote}</p>
                 <ThemeProvider theme={theme}>
-                <button className="vote-btn yes" disabled={disableYes} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></button>
+                <button className="vote-btn yes" disabled={disable} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></button>
                 </ThemeProvider>
                 <ThemeProvider theme={theme2}>
-                <button className="vote-btn no" disabled={disableNo} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></button>
+                <button className="vote-btn no" disabled={disable} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></button>
                 </ThemeProvider>
             </div>
         </div>            

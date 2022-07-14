@@ -51,7 +51,7 @@ SELECT
 	application."whyYou",
 	application.file,
 	application.video,
-	SUM(vote.vote)
+	SUM(vote.vote) as vote
 FROM application
 LEFT JOIN vote
 	on application.id = vote.application_id
@@ -77,14 +77,59 @@ SELECT
         application.file,
         application.video,
         json_agg(comment.comment) as comments,
-        SUM(vote.vote) as vote
+        SUM(vote.vote) as "sumOfVotes"
     FROM application
     LEFT JOIN comment
         on application.id = comment.application_id
     LEFT JOIN vote
         on application.id = vote.application_id
-    WHERE application.id = 1
-    GROUP BY application.id, vote.vote;
+    WHERE application.id = 2
+    GROUP BY application.id;
+    
+SELECT
+        application.id as "appId",
+        array_agg(comment.comment),
+        vote.user_id as "voteUsrId",
+        --vote.id as "voteId",
+        sum(vote.vote)
+    FROM application
+    LEFT JOIN comment
+        on application.id = comment.application_id
+    LEFT JOIN vote
+        on application.id = vote.application_id
+    WHERE application.id = 2
+    GROUP BY application.id, vote.user_id;
+
+-- List view
+SELECT
+	application.*,
+	coalesce(sum(vote.vote), 0) as "voteCount"
+FROM application
+	LEFT JOIN vote ON vote.application_id = application.id
+GROUP BY application.id;
+
+
+--- Detail view (combines both steps, for a single application)
+SELECT
+	application.id,
+	application.name,
+	-- application.*,   (to get everything about the app)
+	coalesce(sum(vote.vote), 0) as "voteCount",
+	(
+		SELECT vote.vote
+		FROM vote
+		WHERE vote.user_id = 2
+		AND vote.application_id = 2
+	) "usersVote",
+	(
+	SELECT array_agg(to_json(comment.*))
+			FROM comment
+			WHERE comment.application_id = 2
+	) as "comments"
+FROM application
+	LEFT JOIN vote ON vote.application_id = application.id
+WHERE application.id = 2
+GROUP BY application.id;
     
 INSERT INTO vote (user_id, application_id, vote)
     VALUES (2, 1, 1);
