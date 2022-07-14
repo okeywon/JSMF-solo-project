@@ -1,8 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const adminRouter = express.Router();
-// const multer  = require('multer');
-// const upload = multer({ dest: 'uploads/' });
+const multer  = require('multer');
+
+const storage = multer.diskStorage({});
+const upload = multer({ storage });
 
 // GET request for all data to display to Admin Page table(list view).
  adminRouter.get('/', (req, res) => {
@@ -26,8 +28,8 @@ const adminRouter = express.Router();
 });
 
 // POST route for user to input an application
- adminRouter.post ('/', (req, res) => {
-    console.log('in POST', req.body);
+ adminRouter.post ('/', upload.single("file"), (req, res) => {
+    console.log('in POST', req.body, "FILE:", req.file);
 
   const sqlQuery = `
     INSERT INTO application (name, email, phone, address, address2, about, "whyYou", file, video)
@@ -46,6 +48,10 @@ const adminRouter = express.Router();
   pool.query(sqlQuery, sqlParams)
   .then((results) => {
     console.log('POST is sending', results.rows);
+    cloudinary.uploader.upload(req.file.path, {
+      folder: "shareMe",
+      resource_type: "auto"
+    })
     res.sendStatus(201);
   })
   .catch((err) => {

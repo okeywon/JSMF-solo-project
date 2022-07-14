@@ -8,7 +8,7 @@ import '../ApplyPage/ApplyPage.css'
 function Application() {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''});
-
+    console.log(formData, "??????????????????");
     const newApplication = (evt) => {
         evt.preventDefault();
 
@@ -138,11 +138,9 @@ function Application() {
                     {errors.whyYou && touched.whyYou && errors.whyYou}
                     <input
                         className="input"
-                        action="/upload"
                         type="file"
                         name="essay"
-                        onChange={(evt) => setFormData({...formData, file: evt.target.value})}
-                        value={formData.file}
+                        onChange={(evt) => setFormData({...formData, file: evt.target.files[0]})}
                     />
                     <input
                         className="input"

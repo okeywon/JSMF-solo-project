@@ -12,8 +12,14 @@ function* fetchAdmin() {
 
 function* addApp(action) {
   // console.log("Adding an application, it reached admin.saga", action)
+  let file = new FormData();
+  file.append("file", action.payload.formData.file)
   try {
-    yield axios.post('/api/admin', action.payload);
+    yield axios.post('/api/admin', file, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
   }
   catch (err) {
       console.log('Error in POST saga', err);
