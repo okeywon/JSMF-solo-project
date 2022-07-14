@@ -13,28 +13,78 @@ CREATE TABLE "application" (
 	"phone" VARCHAR(15) NOT NULL,
 	"address" VARCHAR NOT NULL,
 	"address2" VARCHAR NOT NULL,
-	"about" VARCHAR,
-	"whyYou" VARCHAR,
-	"file" VARCHAR,
-	"video" VARCHAR
-);
-
-INSERT INTO "application"
-VALUES
-	(1, 'Pending', 'Fred Savage', 'f.savage@yahoo.com', 6543219871, '123 Court Rd', 'Chisholm, MN 55123', 'I can juggle and ride a bike!', 'I was on the honor roll for 3 years and graduated Summa Cum Laude', './myEssay.docx', 'https://youtube.com/example'),
-	(2, 'Selected', 'Bill Theodore', 'b.t123@yahoo.com', 7891234567, '456 Street Rd', 'Chisholm, MN 55123', 'I am an accomplished pianist and skilled painter.', 'I have an acceptance letter to Stanford University', './ICopiedFred.docx', 'https://youtube.com/example2');
-	
+	"about" VARCHAR DEFAULT NULL,
+	"whyYou" VARCHAR DEFAULT NULL,
+	"file" VARCHAR DEFAULT NULL,
+	"video" VARCHAR DEFAULT NULL
+);	
 
 CREATE TABLE "comment" (
 	"id" SERIAL PRIMARY KEY,
-	"user_id" INT,
-	"application_id" INT,
-	"comment" VARCHAR
+	"user_id" INT REFERENCES "user"
+		ON DELETE CASCADE,
+	"application_id" INT REFERENCES application
+		ON DELETE CASCADE,
+	"comment" VARCHAR DEFAULT 'Comment...',
+	"timeStamp" timeStamp DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE "vote" (
 	"id" SERIAL PRIMARY KEY,
-	"user_id" INT,
-	"application_id" INT,
-	"vote" int
+	"user_id" INT REFERENCES "user"
+		ON DELETE CASCADE,
+	"application_id" INT REFERENCES application
+		ON DELETE CASCADE,
+	UNIQUE ("user_id", "application_id"),
+	"vote" INT DEFAULT 0
 );
+
+SELECT
+	application.id,
+	application.status,
+	application.name,
+	application.email,
+	application.phone,
+	application.address,
+	application.address2,
+	application.about,
+	application."whyYou",
+	application.file,
+	application.video,
+	SUM(vote.vote)
+FROM application
+LEFT JOIN vote
+	on application.id = vote.application_id
+GROUP BY application.id
+ORDER BY application.id;
+
+UPDATE application.status
+WHERE id = req.body.id;
+
+DELETE FROM application
+WHERE application.id = 3;
+
+SELECT
+        application.id,
+        application.status,
+        application.name,
+        application.email,
+        application.phone,
+        application.address,
+        application.address2,
+        application.about,
+        application."whyYou",
+        application.file,
+        application.video,
+        json_agg(comment.comment) as comments,
+        SUM(vote.vote) as vote
+    FROM application
+    LEFT JOIN comment
+        on application.id = comment.application_id
+    LEFT JOIN vote
+        on application.id = vote.application_id
+    WHERE application.id = 1
+    GROUP BY application.id, vote.vote;
+    
+INSERT INTO vote (user_id, application_id, vote)
+    VALUES (2, 1, 1);
