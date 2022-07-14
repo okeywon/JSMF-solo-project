@@ -67,6 +67,7 @@ function Application() {
                 touched,
                 }) => (
                 <form onSubmit={(newApplication)}>
+                    <label>Name</label>
                     <input 
                         className="input"
                         type="name"
@@ -76,6 +77,7 @@ function Application() {
                         value={formData.name}
                     />
                     {errors.name && touched.name && errors.name}
+                    <label>Email</label>
                     <input
                         className="input"
                         type="email"
@@ -85,6 +87,7 @@ function Application() {
                         value={formData.email}
                     />
                     {errors.email && touched.email && errors.email}
+                    <label>Phone</label>
                     <input
                         className="input"
                         type="phone"
@@ -94,6 +97,7 @@ function Application() {
                         value={formData.phone}
                     />
                     {errors.phone && touched.phone && errors.phone}
+                    <label>Street Address</label>
                     <input
                         className="input"
                         type="address"
@@ -103,6 +107,7 @@ function Application() {
                         value={formData.address}
                     />
                     {errors.address && touched.address && errors.address}
+                    <label>City, State, Zip</label>
                     <input
                         className="input"
                         type="address2"
@@ -112,6 +117,7 @@ function Application() {
                         value={formData.address2}
                     />
                     {errors.address2 && touched.address2 && errors.address2}
+                    <label>About You</label>
                     <TextareaAutosize
                         className="input text-area"
                         type="about"
@@ -124,6 +130,7 @@ function Application() {
                         value={formData.about}
                     />
                     {errors.about && touched.about && errors.about}
+                    <label>Why You're the Best Candidate</label>
                     <TextareaAutosize
                         className="input text-area"
                         type="whyYou"
@@ -136,14 +143,18 @@ function Application() {
                         value={formData.whyYou}
                     />
                     {errors.whyYou && touched.whyYou && errors.whyYou}
+                    <label>File Upload</label>
                     <input
                         className="input"
+                        placeholder="Choose File"
                         type="file"
                         name="essay"
                         onChange={(evt) => setFormData({...formData, file: evt.target.files[0]})}
                     />
+                    <label>Video Upload</label>
                     <input
                         className="input"
+                        placeholder="Choose Video"
                         type="file"
                         name="videoURL"
                         onChange={(evt) => setFormData({...formData, video: evt.target.files[0]})}
