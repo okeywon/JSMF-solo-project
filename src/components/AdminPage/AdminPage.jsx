@@ -117,7 +117,7 @@ function AdminPage() {
               <StyledTableCell>{app.whyYou}</StyledTableCell>
               <StyledTableCell>{app.file}</StyledTableCell>
               <StyledTableCell>{app.video}</StyledTableCell>
-              <StyledTableCell>{app.vote}</StyledTableCell>
+              <StyledTableCell>{app.voteCount}</StyledTableCell>
               <StyledTableCell>
                 <Link to={`/admin/${app.id}`}>
                   <button className="edit-btn" onClick={()=>editApp(app.id)}>
