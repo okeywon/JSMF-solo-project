@@ -37,11 +37,12 @@ h3 {
 }
 
 .input-comment {
-    margin: 4% 0 0 18%;
+    margin: 0 0 0 8%;
     width: 50%;
 }
 
 .input-ok {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -61,7 +62,8 @@ h3 {
 }
 
 .vote-btn {
-    vertical-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .vote-btn:hover {
