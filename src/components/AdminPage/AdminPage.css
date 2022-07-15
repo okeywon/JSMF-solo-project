@@ -1,7 +1,11 @@
+.table-style {
+    display: flex;
+}
+
 .table {
     padding: 1%;
     margin: 1%;
-    width: 80%;
+    width: 100%;
 }
 
 .edit-btn {
