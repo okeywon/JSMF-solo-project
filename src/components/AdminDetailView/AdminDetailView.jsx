@@ -90,50 +90,49 @@ function adminDetailView() {
     }
 
     return (
-
         <div className="float-Container">
             <h3>Application</h3>
             <div className="float-infoLeft">
-                <h4>Name: {application.name}</h4>
-                <h4>Email: {application.email}</h4>
-                <h4>Phone: {application.phone}</h4>
-                <h4>Address: {application.address}{application.address2}</h4>
-                <h4>File Uploaded: {application.file}</h4>
-                <h4>Applicant Video: {application.video}</h4>
+                <p>Name: {application.name}</p>
+                <p>Email: {application.email}</p>
+                <p>Phone: {application.phone}</p>
+                <p>Address: {application.address}{application.address2}</p>
+                <p>File Uploaded: {application.file}</p>
+                <p>Applicant Video: {application.video}</p>
             </div>
             <div className="float-infoRight">
-                <h4>About Applicant: {application.about}</h4>
-                <h4>Why are you the best applicant? {application.whyYou}</h4>
+                <p>About Applicant: {application.about}</p>
+                <p>Why are you the best applicant? {application.whyYou}</p>
             </div>
-            <div>
-                
+            <div className="comments">
                 {comment && comment.map((note) => (
                     <ul key={note.id}>
                         <li>Comment: {note.comment} by: {note.user_id} at: <Moment>{note.timeStamp}</Moment></li>
                     </ul>
                 ))}
-                
-                <TextareaAutosize
-                    className="input comment"
-                    type="comment"
-                    name="comment"
-                    value={newComment}
-                    maxRows={8}
-                    aria-label="maximum height"
-                    placeholder="Comment..."
-                    style={{ width: 200 }}
-                    onChange={(evt) => setNewComment(evt.target.value)}
-                />
-                <button
-                    className="ok-btn"
-                    onClick={() => {
-                        addComment(newComment)
-                    }}
-                >
-                OK
-                </button>
+                <div className="input-ok">
+                    <TextareaAutosize
+                        className="input-comment"
+                        type="comment"
+                        name="comment"
+                        value={newComment}
+                        maxRows={8}
+                        aria-label="maximum height"
+                        placeholder="Comment..."
+                        style={{ width: 200 }}
+                        onChange={(evt) => setNewComment(evt.target.value)}
+                    />
+                    <button
+                        className="ok-btn"
+                        onClick={() => {
+                            addComment(newComment)
+                        }}
+                    >
+                    OK
+                    </button>
+                </div>
             </div>
-            <div>
+            <div className="vote">
                 <p>Would you like to vote for this candidate?</p>
                 <p>Current Votes: {application.voteCount}</p>
                 <ThemeProvider theme={theme}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {CardNumberElement} from '@stripe/react-stripe-js';
+import './DonationPage.css';
 
 function DonatePage() {
     
@@ -8,7 +9,7 @@ function DonatePage() {
     }
 
     return (
-        <div className="container">
+        <div className="donate-container">
             <div>
                 <p>Care to contribute to the Jerry Snyder Memorial Fund?</p>
                 <p>Proceeds are tax deductible! Please request a Tax Credit through the email here: jerrysnyderscholarship@gmail.com</p>
