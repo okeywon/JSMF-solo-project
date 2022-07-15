@@ -32,7 +32,7 @@ h3 {
 }
 
 .comments {
-    margin: 4% 0 0 -3%;
+    margin: 4% 0 0 -1%;
     width: 50%;
 }
 
@@ -64,6 +64,9 @@ h3 {
 .vote-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin: 1%;
+    margin-left: 42%;
 }
 
 .vote-btn:hover {
