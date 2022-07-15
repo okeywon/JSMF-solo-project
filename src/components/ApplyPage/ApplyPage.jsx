@@ -21,9 +21,13 @@ function Application() {
         setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''});
     }
 
+    const autoComplete = () => {
+        setFormData({name:'David Tennent', email:'THEdoctor@gmail.com', phone: '213-645-7890', address: '123 Main St.', address2: 'Chisholm, MN 55123', about: "I'm the Doctor and I'm very good at traveling through time and space!", whyYou: "I'm clearly the only Doctor worthy of a scholarship as I am clearly THE Doctor. Also, I have the best companions - proven as they stayed on long after I was gone.", file: '', video: ''});
+    }
+
     return (
         <div className="application">
-            <h3>Apply Here:</h3>
+            <h3 onClick={autoComplete}>Apply Here:</h3>
             <Formik
                 initialValues={{name: '', email: '', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''}}
                 validate={values => {
