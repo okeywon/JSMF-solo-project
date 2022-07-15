@@ -1,10 +1,15 @@
+.comments {
+    list-style-type: none;
+}
+
 .float-Container {
     display: flex;
     background-color: #D0CDCA;
     width: 80%;
     margin: 4%;
-    padding: 5%;
+    padding: 3%;
     box-shadow: 10px 5px 5px black;
+    font-size: 18px;
 }
 
 h3 {
@@ -16,18 +21,47 @@ h3 {
 
 .float-infoLeft {
     margin: 4% 1% 1% -5%;
-    width: 50%;
+    width: 17%;
     flex: 1;
 }
 
 .float-infoRight {
-    margin: 4% 1% 1% 1%;
-    width: 50%;
+    margin: 4% 0.5% 0 1%;
+    width: 43%;
     float: right;
+}
+
+.comments {
+    margin: 4% 0 0 -3%;
+    width: 50%;
+}
+
+.input-comment {
+    margin: 4% 0 0 18%;
+    width: 50%;
+}
+
+.input-ok {
+    align-items: center;
+    justify-content: center;
+}
+
+.ok-btn {
+    margin: 1%;
 }
 
 .ok-btn:hover {
     cursor: pointer;
+}
+
+.vote {
+    margin: 12% 0 0 1%;
+    width: 50%;
+    text-align: center;
+}
+
+.vote-btn {
+    vertical-align: center;
 }
 
 .vote-btn:hover {

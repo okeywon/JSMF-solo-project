@@ -1,8 +1,26 @@
 /* --------------------------------------------------------------------------------
 Grid
 -------------------------------------------------------------------------------- */
-h2 {
+.mission {
   text-align: center;
+  background-color: #d0cdca8d;
+  border-radius: 5%;
+}
+
+h4 {
+  color: whitesmoke;
+}
+
+.container {
+  background-image: url("../../../public/images/Jerry-Snyder-copy.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  width: 90%;
+  background-position-x: 40%;
+  background-position-y: -24px;
+  padding: 5%;
+  margin: 0;
 }
 
 .donate-btn {
@@ -54,7 +72,8 @@ h2 {
 .grid-col_4 {
   flex-basis: 33.33333333%;
   max-width: 33.33333333%;
-  padding-left: 5%;
+  padding: 0;
+  margin: 6% 0 0 5%;
 }
 
 .grid-col_5 {
@@ -75,6 +94,8 @@ h2 {
 .grid-col_8 {
   flex-basis: 60.66666667%;
   max-width: 60.66666667%;
+  color: whitesmoke;
+  margin: 10% -2% 0 -2%;
 }
 
 .grid-col_9 {

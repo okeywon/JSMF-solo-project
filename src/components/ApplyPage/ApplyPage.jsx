@@ -23,7 +23,7 @@ function Application() {
 
     return (
         <div className="application">
-            <h4>Apply Here:</h4>
+            <h3>Apply Here:</h3>
             <Formik
                 initialValues={{name: '', email: '', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''}}
                 validate={values => {
@@ -67,6 +67,7 @@ function Application() {
                 touched,
                 }) => (
                 <form onSubmit={(newApplication)}>
+                    <label for="name">Name</label>
                     <input 
                         className="input"
                         type="name"
@@ -76,6 +77,7 @@ function Application() {
                         value={formData.name}
                     />
                     {errors.name && touched.name && errors.name}
+                    <label for="email">Email</label>
                     <input
                         className="input"
                         type="email"
@@ -85,6 +87,7 @@ function Application() {
                         value={formData.email}
                     />
                     {errors.email && touched.email && errors.email}
+                    <label for="phone">Phone</label>
                     <input
                         className="input"
                         type="phone"
@@ -94,6 +97,7 @@ function Application() {
                         value={formData.phone}
                     />
                     {errors.phone && touched.phone && errors.phone}
+                    <label for="address">Street Address</label>
                     <input
                         className="input"
                         type="address"
@@ -103,6 +107,7 @@ function Application() {
                         value={formData.address}
                     />
                     {errors.address && touched.address && errors.address}
+                    <label for="address2">City, State, Zip</label>
                     <input
                         className="input"
                         type="address2"
@@ -112,6 +117,7 @@ function Application() {
                         value={formData.address2}
                     />
                     {errors.address2 && touched.address2 && errors.address2}
+                    <label for="about">About You</label>
                     <TextareaAutosize
                         className="input text-area"
                         type="about"
@@ -124,18 +130,20 @@ function Application() {
                         value={formData.about}
                     />
                     {errors.about && touched.about && errors.about}
+                    <label for="whyYou">Why are you the best candidate?</label>
                     <TextareaAutosize
                         className="input text-area"
                         type="whyYou"
                         name="whyYou"
                         maxRows={8}
                         aria-label="maximum height"
-                        placeholder="Why are you the best candidate?"
+                        placeholder="Your answer."
                         style={{ width: 200 }}
                         onChange={(evt) => setFormData({...formData, whyYou: evt.target.value})}
                         value={formData.whyYou}
                     />
                     {errors.whyYou && touched.whyYou && errors.whyYou}
+                    <label for="file">Upload File</label>
                     <input
                         className="input"
                         action="/upload"
@@ -144,6 +152,7 @@ function Application() {
                         onChange={(evt) => setFormData({...formData, file: evt.target.value})}
                         value={formData.file}
                     />
+                    <label for="video">Upload Video</label>
                     <input
                         className="input"
                         type="url"
