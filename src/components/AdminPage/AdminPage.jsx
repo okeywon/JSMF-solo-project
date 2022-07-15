@@ -58,7 +58,7 @@ function AdminPage() {
   }));
 
   return (
-    <div>
+    <div className="table-style">
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
