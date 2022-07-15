@@ -17,7 +17,6 @@ import FormControl from '@mui/material/FormControl';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import Select from '@mui/material/Select';
-
 import './AdminPage.css'
 
 function AdminPage() {

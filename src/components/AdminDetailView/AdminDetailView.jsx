@@ -90,7 +90,6 @@ function adminDetailView() {
     }
 
     return (
-
         <div className="float-Container">
             <h3>Application</h3>
             <div className="float-infoLeft">
