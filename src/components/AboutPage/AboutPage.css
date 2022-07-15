@@ -1,5 +1,23 @@
+.about-container {
+    background-image: url("../../../public/images/Jerry-Snyder-copy.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    width: 90%;
+    background-position-x: 40%;
+    background-position-y: -24px;
+    padding: 5%;
+    margin: 0;
+}
+
 .info {
-background-color: #d0cdca8d;
-border-radius: 5%;
-font-size: 20px;
+    padding: 1%;
+    margin: 1%;
+    background-color: #d0cdca8d;
+    border-radius: 5%;
+    font-size: 20px;
+}
+
+.donate {
+    margin-left: 48%;
 }
