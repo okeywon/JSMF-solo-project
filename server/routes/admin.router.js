@@ -44,22 +44,22 @@ const upload = multer({ storage, videoStorage });
 });
 
 // POST route for user to input an application
- adminRouter.post ('/', upload.single("file"), (req, res) => {
-    console.log('in POST', req.body, "FILE:", req.file);
-
+ adminRouter.post ('/', upload.any(), (req, res) => {
+    console.log('in POST', req.body, "FILE:", req.files);
+    console.log("look here >>>>>>>>>>", req.body);
   const sqlQuery = `
     INSERT INTO application (name, email, phone, address, address2, about, "whyYou", file, video)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
   const sqlParams = [
-    req.body.formData.name,
-    req.body.formData.email,
-    req.body.formData.phone,
-    req.body.formData.address,
-    req.body.formData.address2,
-    req.body.formData.about,
-    req.body.formData.whyYou,
-    req.body.formData.file,
-    req.body.formData.video
+    req.body.name,
+    req.body.email,
+    req.body.phone,
+    req.body.address,
+    req.body.address2,
+    req.body.about,
+    req.body.whyYou,
+    req.body.file,
+    req.body.video
  ];
   pool.query(sqlQuery, sqlParams)
   .then((results) => {
@@ -77,21 +77,21 @@ const upload = multer({ storage, videoStorage });
 });
 
 // POST FOR CLOUDINARY
-adminRouter.post('/upload', async (req, res)=>{
-  try{
-    const fileStr = req.body.formData.file;
-    fileStr.append(req.body.formData.video);
-    const uploadedResponse = await cloudinary.uploader
-    upload(fileStr, {
-      upload_preset: 'dev_setups'
-    });
-    console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadedResponse);
-    res.json({msg: 'YAY'})
-  }catch(err){
-    console.log(err, 'error in Cloudinary post');
-    res.sendStatus(500);
-  }
-})
+// adminRouter.post('/upload', async (req, res)=>{
+//   try{
+//     const fileStr = req.body.formData.file;
+//     fileStr.append(req.body.formData.video);
+//     const uploadedResponse = await cloudinary.uploader
+//     upload(fileStr, {
+//       upload_preset: 'dev_setups'
+//     });
+//     console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadedResponse);
+//     res.json({msg: 'YAY'})
+//   }catch(err){
+//     console.log(err, 'error in Cloudinary post');
+//     res.sendStatus(500);
+//   }
+// })
 
 // PUT route to update the status on the Admin Page list view
 adminRouter.put('/:applicationID', (req, res) => {
