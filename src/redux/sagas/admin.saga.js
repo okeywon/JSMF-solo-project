@@ -19,7 +19,7 @@ function* addApp(action) {
   try {
     yield axios.post('/api/admin', file, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data; boundary=${form._boundary}'
       }
     });
   }

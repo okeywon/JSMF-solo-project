@@ -76,21 +76,22 @@ const upload = multer({ storage, videoStorage });
   })
 });
 
-// POST to upload a file using cloudinary uploader - NOT working currently
-// adminRouter.post('/api/upload', async (req, res)=>{
-//   try{
-//     const fileStr = req.body.data;
-//     const uploadedResponse = await cloudinary.uploader.
-//     upload(fileStr, {
-//       upload_preset: 'dev_setups'
-//     })
-//     console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadResponse);
-//     res.json({msg: 'YAY'})
-//   }catch(err){
-//     console.log(err);
-//     res.status(500).json({err: 'Something failed in file upload'})
-//   }
-// })
+// POST FOR CLOUDINARY
+adminRouter.post('/upload', async (req, res)=>{
+  try{
+    const fileStr = req.body.formData.file;
+    fileStr.append(req.body.formData.video);
+    const uploadedResponse = await cloudinary.uploader
+    upload(fileStr, {
+      upload_preset: 'dev_setups'
+    });
+    console.log('this is the uploadResponse for the file upload POST in adminRouter:', uploadedResponse);
+    res.json({msg: 'YAY'})
+  }catch(err){
+    console.log(err, 'error in Cloudinary post');
+    res.sendStatus(500);
+  }
+})
 
 // PUT route to update the status on the Admin Page list view
 adminRouter.put('/:applicationID', (req, res) => {

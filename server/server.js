@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
+const url = process.env.CLOUDINARY_URL;
 
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({

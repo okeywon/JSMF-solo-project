@@ -32,7 +32,6 @@ h2 {
 
 .grid-col {
   flex: 0 0 auto;
-  padding: 0 0.5rem 0.5rem;
   box-sizing: border-box;
 }
 
@@ -54,7 +53,7 @@ h2 {
 .grid-col_4 {
   flex-basis: 33.33333333%;
   max-width: 33.33333333%;
-  padding-left: 5%;
+  padding-left: 4% 0 0 2%;
 }
 
 .grid-col_5 {
@@ -75,6 +74,7 @@ h2 {
 .grid-col_8 {
   flex-basis: 60.66666667%;
   max-width: 60.66666667%;
+  padding: 5% 5% 0 5%;
 }
 
 .grid-col_9 {
