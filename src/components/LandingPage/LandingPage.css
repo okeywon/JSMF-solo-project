@@ -3,8 +3,10 @@ Grid
 -------------------------------------------------------------------------------- */
 .mission {
   text-align: center;
-  background-color: #d0cdca8d;
+  background-color: #d0cdcab7;
   border-radius: 5%;
+  padding: 2%;
+  margin: 2%;
 }
 
 h4 {

@@ -132,14 +132,14 @@ function adminDetailView() {
                     </button>
                 </div>
             </div>
-            <div className="vote">
+            <div className="voteDiv">
                 <p>Would you like to vote for this candidate?</p>
                 <p>Current Votes: {application.voteCount}</p>
                 <ThemeProvider theme={theme}>
-                <button className="vote-btn yes" disabled={disable} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></button>
+                <button className="vote yes" disabled={disable} onClick={(evt) => upVote(evt)}>Yes<ThumbUpAltRoundedIcon color="secondary"/></button>
                 </ThemeProvider>
                 <ThemeProvider theme={theme2}>
-                <button className="vote-btn no" disabled={disable} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></button>
+                <button className="vote no" disabled={disable} onClick={(evt) => downVote(evt)}>No<ThumbDownRoundedIcon color="secondary"/></button>
                 </ThemeProvider>
             </div>
         </div>            

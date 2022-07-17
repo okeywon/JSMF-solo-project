@@ -13,6 +13,7 @@
     width: 50px;
     border: none;
     background-color: #f7f4f1;
+    color: black;
 }
 
 .delete-btn {
@@ -20,6 +21,7 @@
     width: 50px;
     border: none;
     background-color: #f7f4f1;
+    color: black;
 }
 
 .edit-btn:hover {
