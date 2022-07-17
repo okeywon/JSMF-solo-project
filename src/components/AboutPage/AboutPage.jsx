@@ -124,7 +124,6 @@ function AboutPage() {
           </AccordionDetails>
         </Accordion>
       </div>
-      <button className="donate-btn-accordion"><a href="https://gf.me/u/zb8by7" target="_blank" className="donate-btn-accordion">Donate</a></button>
     </div>
   );
 }
