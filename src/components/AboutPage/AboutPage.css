@@ -9,12 +9,9 @@
     color: #F8F3F5;
 }
 
-a {
-    text-decoration: none;
-}
-
 .linkColor {
-    color: black;
+    color: blue;
+    text-decoration: underline;
 }
 
 .about-container {

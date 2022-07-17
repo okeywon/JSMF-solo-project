@@ -14,4 +14,48 @@
     margin: auto;
     margin-top: 1%;
     background-color: #0756B1;
+    width: 190px;
+    padding: 5%;
+}
+
+.contentLeft {
+    margin-left: 10%;
+    margin-right: -10%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: baseline;
+    width: 70%;
+    line-height: 10px;
+    font-size: 16px;
+}
+
+.contentRight {
+    margin: 10% 10% 5% 0;
+    padding: 0;
+    justify-content: right;
+    width: 18%;
+}
+
+.cardInput {
+    margin: 2% 0 0 0;
+    padding: 2%;
+    width: 40%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+.submit {
+    padding: 2%;
+    margin: 0;
+    /* width: 30%; */
+}
+
+.gfmBtn {
+    display: block;
 }
