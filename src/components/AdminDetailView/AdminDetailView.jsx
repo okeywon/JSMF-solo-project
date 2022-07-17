@@ -107,7 +107,7 @@ function adminDetailView() {
             <div className="comments">
                 {comment && comment.map((note) => (
                     <ul key={note.id}>
-                        <li>Comment: {note.comment} by: {note.user_id} at: <Moment>{note.timeStamp}</Moment></li>
+                        <li className="comments">Comment: {note.comment} by: {note.user_id} at: <Moment>{note.timeStamp}</Moment></li>
                     </ul>
                 ))}
                 <div className="input-ok">
