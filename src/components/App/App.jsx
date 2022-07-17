@@ -71,14 +71,11 @@ function App() {
           >
             <StripeProvider
               apiKey="pk_test_51LGqe5B33WMXzL0LydhqCqp2ybjBDzDaRpYxleitAJLkvVI6HIOoAgYw2q9ePOWeH7JPsxGmpNdpMtsB8bfxdMDx00hV6j1YaG"
-              urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
-              merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
             >
               <Elements stripe={stripePromise}>
                 <DonatePage />
               </Elements>
             </StripeProvider>
-            
           </Route>
 
           <Route

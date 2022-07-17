@@ -3,3 +3,19 @@
     padding: 2%;
     margin-left: 20%;
 }
+
+.cardContainer {
+    padding: 1%;
+    margin: 1%;
+    border: 2px solid gray;
+    border-radius: 5px;
+    width:50%;
+}
+
+.cardInfo {
+    padding: 1%;
+    margin: 1%;
+    border: 2px solid gray;
+    border-radius: 5px;
+    width: 50%;
+}
