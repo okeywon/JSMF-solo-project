@@ -53,30 +53,30 @@ h3 {
 
 .ok-btn:hover {
     cursor: pointer;
+    background-color: #4EC4DE;
 }
 
-.vote {
+.voteDiv {
     margin: 12% 0 0 1%;
     width: 50%;
     text-align: center;
 }
 
-.vote-btn {
+.vote {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1%;
     margin-left: 42%;
+    background-color: #D0CDCA;
+    color: black;
+    width: 70px;
 }
 
-.vote-btn:hover {
+.vote:hover {
     cursor: pointer;
 }
 
-.yes:hover {
-    background-color: whitesmoke;
-}
-
-.no:hover {
+.vote:hover {
     background-color: whitesmoke;
 }

@@ -1,5 +1,17 @@
 .donate-container {
-    margin: 2%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
     padding: 2%;
-    margin-left: 20%;
+}
+
+.donate-btn-page {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 1%;
+    background-color: #0756B1;
 }

@@ -1,3 +1,22 @@
+.donate-btn-accordion {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 1%;
+    background-color: #0756B1;
+    color: #F8F3F5;
+}
+
+a {
+    text-decoration: none;
+}
+
+.linkColor {
+    color: black;
+}
+
 .about-container {
     background-image: url("../../../public/images/Jerry-Snyder-copy.jpeg");
     background-repeat: no-repeat;
