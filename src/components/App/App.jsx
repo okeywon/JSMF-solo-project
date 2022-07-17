@@ -19,6 +19,7 @@ import DetailPage from '../AdminDetailView/AdminDetailView';
 import DonatePage from '../DonationPage/DonationPage';
 import ContactPage from '../ContactPage/ContactPage';
 import Application from '../ApplyPage/ApplyPage';
+import {StripeProvider} from 'react-stripe-elements';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import {AdvancedImage} from '@cloudinary/react';
@@ -26,6 +27,7 @@ import {CloudinaryImage} from "@cloudinary/url-gen";
 import {URLConfig} from "@cloudinary/url-gen";
 import {Cloudinary} from "@cloudinary/url-gen";
 import {CloudConfig} from "@cloudinary/url-gen";
+// const apiKey = require('dotenv').config();
 
 import './App.css';
 
@@ -67,9 +69,16 @@ function App() {
             exact
             path="/donate"
           >
-            <Elements stripe={stripePromise}>
-              <DonatePage />
-            </Elements>
+            <StripeProvider
+              apiKey="pk_test_51LGqe5B33WMXzL0LydhqCqp2ybjBDzDaRpYxleitAJLkvVI6HIOoAgYw2q9ePOWeH7JPsxGmpNdpMtsB8bfxdMDx00hV6j1YaG"
+              urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
+              merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
+            >
+              <Elements stripe={stripePromise}>
+                <DonatePage />
+              </Elements>
+            </StripeProvider>
+            
           </Route>
 
           <Route
