@@ -9,9 +9,15 @@
     color: #F8F3F5;
 }
 
+.accordionBackground {
+    width: 80%;
+    margin: auto;
+}
+
 .linkColor {
     color: blue;
     text-decoration: underline;
+    background-color: #d0cdcaaf;
 }
 
 .about-container {
