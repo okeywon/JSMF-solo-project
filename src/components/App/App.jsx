@@ -19,6 +19,7 @@ import DetailPage from '../AdminDetailView/AdminDetailView';
 import DonatePage from '../DonationPage/DonationPage';
 import ContactPage from '../ContactPage/ContactPage';
 import Application from '../ApplyPage/ApplyPage';
+import Presentation from '../Presentation/Presentation';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import {AdvancedImage} from '@cloudinary/react';
@@ -86,6 +87,14 @@ function App() {
             path="/contact"
           >
             <ContactPage />
+          </Route>
+
+          <Route
+            // shows DonatePage at all times (logged in or not)
+            exact
+            path="/presentation"
+          >
+            <Presentation/>
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
