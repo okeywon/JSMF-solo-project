@@ -128,10 +128,14 @@ function AdminPage() {
               </StyledTableCell>
               <StyledTableCell>
                 <button className="delete-btn" onClick={()=>{
-                  dispatch({
-                    type: "DELETE_APP",
-                    payload: app,
-                  })
+                  if (confirm("Are you sure you want to delete this applicant?") == true) {
+                    dispatch({
+                      type: "DELETE_APP",
+                      payload: app,
+                    })
+                  } else {
+                      return;
+                  }
                 }}>
                   <DeleteRoundedIcon/>
                   Delete

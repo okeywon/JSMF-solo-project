@@ -30,6 +30,7 @@ function Presentation() {
           <ul>I'd like to thank:
               <li>Prime Digital Academy</li>
               <li>Edan Schwartz</li>
+              <li>The Gaiman Cohort</li>
               <li>Jerry Snyder Memorial Fund</li>
               <li>Rick Snyder</li>
               <li>My Amazing Family</li>
