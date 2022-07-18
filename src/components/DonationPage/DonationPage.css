@@ -20,7 +20,7 @@
 
 .contentLeft {
     margin-left: 10%;
-    margin-right: -10%;
+    margin-right: -18%;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -36,7 +36,7 @@
     margin: 10% 10% 5% 0;
     padding: 0;
     justify-content: right;
-    width: 18%;
+    width: 30%;
 }
 
 .cardInput {
