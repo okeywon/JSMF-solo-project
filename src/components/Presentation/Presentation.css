@@ -1,0 +1,19 @@
+img {
+    display: flex;
+    align-items: right;
+    margin-left: 15%;
+    height: 40%;
+    width: 40%;
+}
+
+.presentation {
+    display: flex;
+}
+
+.text {
+    margin-top: 5%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
