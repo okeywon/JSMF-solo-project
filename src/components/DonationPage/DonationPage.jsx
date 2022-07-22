@@ -15,7 +15,7 @@ function DonatePage() {
                 <p>Care to contribute to the Jerry Snyder Memorial Fund?</p>
                 <p>Proceeds are tax deductible! Please request a Tax Credit via email: jerrysnyderscholarship@gmail.com</p>
                 <div className="gfmBtn">
-                    <button className="donate-btn-page"><a href="https://gf.me/u/zb8by7" target="_blank">Donate via GoFundMe</a></button>
+                    <button className="donate-btn-page"><a href="https://gofund.me/d56cc64c" target="_blank">Donate via GoFundMe</a></button>
                 </div>
                 <p>How much would you like to donate today?</p>
                 <div className="cardInput">

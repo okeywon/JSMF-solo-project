@@ -75,7 +75,7 @@ h4 {
   flex-basis: 33.33333333%;
   max-width: 33.33333333%;
   padding: 0;
-  margin: 8% 0 0 5%;
+  margin: 4% 0 0 35%;
 }
 
 .grid-col_5 {
@@ -94,11 +94,11 @@ h4 {
 }
 
 .grid-col_8 {
-  flex-basis: 60.66666667%;
-  max-width: 60.66666667%;
+  flex-basis: 40.666667%;
+  max-width: 34.666667%;
   color: black;
-  margin: 10% -2% 0 -2%;
-  padding: 2%;
+  margin-left: -3%;
+  padding: 0%;
 }
 
 .grid-col_9 {
