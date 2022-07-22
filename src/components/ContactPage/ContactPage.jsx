@@ -10,7 +10,7 @@ function ContactPage() {
             <p>Email: jerrysnyderscholarship@gmail.com</p>
             <p>GoFundMe: https://gf.me/u/zb8by7</p>
             <p>Address: 8710 Isle Ct. S, Cottage Grove, MN 55016</p>
-            <button><a href="https://gf.me/u/zb8by7" target="_blank">Donate</a></button>
+            <button><a href="https://gofund.me/d56cc64c" target="_blank">Donate</a></button>
         </div>
         </div>
   );

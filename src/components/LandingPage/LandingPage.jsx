@@ -19,7 +19,7 @@ function LandingPage() {
       {/* <img src="./images/Jerry-Snyder.jpeg"/> */}
       <div className="grid">
         <div className="grid-col grid-col_8">
-          <h2 className="mission">The mission of the Jerry Snyder Memorial Fund is to honor the musical legacy built by Jerry Snyder at Chisholm High School and to carry it forward by raising funds and awarding at least one scholarship per year to a deserving student from Chisholm High School.</h2>
+          <p className="mission">The mission of the Jerry Snyder Memorial Fund is to honor the musical legacy built by Jerry Snyder at Chisholm High School and to carry it forward by raising funds and awarding at least one scholarship per year to a deserving student from Chisholm High School.</p>
         </div>
         <div className="grid-col grid-col_4">
           {/* <RegisterForm /> */}
@@ -36,7 +36,7 @@ function LandingPage() {
                 title="Embedded youtube"
               />
             </div>
-            <button className="donate-btn"><a href="https://gf.me/u/zb8by7" target="_blank">Donate</a></button>
+            <button className="donate-btn"><a href="https://gofund.me/d56cc64c" target="_blank">Donate</a></button>
           </center>
         </div>
       </div>
