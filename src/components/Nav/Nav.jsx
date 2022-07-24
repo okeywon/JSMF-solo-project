@@ -9,6 +9,7 @@ function Nav() {
 
   return (
     <div className="nav">
+      <img src="/images/JSMF-Logo.png"/>
       <Link to="/home">
         <h2 className="nav-title">Jerry Snyder Memorial Fund</h2>
       </Link>

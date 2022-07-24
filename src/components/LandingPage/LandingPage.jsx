@@ -16,7 +16,6 @@ function LandingPage() {
 
   return (
     <div className="container">
-      {/* <img src="./images/Jerry-Snyder.jpeg"/> */}
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p className="mission">The mission of the Jerry Snyder Memorial Fund is to honor the musical legacy built by Jerry Snyder at Chisholm High School by awarding one scholarship per year to a deserving student from Chisholm High School.</p>
