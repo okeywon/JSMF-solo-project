@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <footer><Link to="/presentation">&copy; Courtney Azar 2022</Link></footer>;
+  return <footer>&copy; Jerry Snyder Memorial Fund</footer>;
 }
 
 export default Footer;

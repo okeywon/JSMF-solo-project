@@ -21,7 +21,7 @@ function AboutPage() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              The mission of JSMF is to honor the musical legacy built by Jerry Snyder at Chisholm High School and to carry it forward by raising funds and awarding at least one scholarship per year to a deserving student from Chisholm High School.
+            The mission of the Jerry Snyder Memorial Fund is to honor the musical legacy built by Jerry Snyder at Chisholm High School by awarding one scholarship per year to a deserving student from Chisholm High School.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -35,7 +35,7 @@ function AboutPage() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              "Jerry Snyder, the Iron Range band leader everyone liked..." This caption from a Star Tribune article dated July 24, 2020 captured our band director well. Jerry Snyder made people in his bands feel welcomed, important, happy, and capable. His students over 30 years received a quality music education under his skillful direction. Many of his students have carried music into their adult lives, whether professionally or just for fun. To honor the man who gifted so many with mentoring, friendship, and quality music experiences in the Chisholm Schools and various community and church groups in Minnesota and Arizona, we have established a fund in his honor. 
+            "Jerry Snyder, the Iron Range band leader everyone liked..." This caption from a 2020 Star Tribune article captured our band director well. Jerry Snyder helped people feel welcomed, happy, and capable. His students spanning 30 years received a quality music education under his skillful direction. Many have carried music into their adult lives, professionally or just for fun. To honor the man who gifted so many with mentoring, friendship, and quality music experiences in Chisholm Schools and community and church groups in Minnesota and Arizona, we have established a scholarship in his honor.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -63,7 +63,7 @@ function AboutPage() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              100% of your contribution goes toward assisting an applicant receive $2,500 award toward their college of choice! You may want to check if you can increase your donation today with a match from your employer. Each student helped by the Jerry Snyder Memorial Fund has an opportunity to improve their education, by donating today you're directly helping a Chisholm High School student in need! Consider helping today!
+              100% of your contribution goes toward assisting an applicant receive $2,500 award toward their college of choice! You may want to check if you can increase your donation today with a match from your employer. Your generous donations funded money for the first two scholarship recipients. Now we are raising donations for the 2023 recipient and beyond. Any amount you can donate will be helpful. Thank you for honoring Mr. Snyder and for investing in students' futures!
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -91,7 +91,7 @@ function AboutPage() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              Click on the <Link to="/apply" className="linkColor">Apply</Link> tab on the navigation bar above.
+              The application window will open in spring 2023. Click on the <Link to="/apply" className="linkColor">Apply</Link> tab on the navigation bar above.
             </Typography>
           </AccordionDetails>
         </Accordion>
