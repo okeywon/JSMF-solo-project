@@ -15,20 +15,14 @@
     margin-top: 1%;
     background-color: #0756B1;
     width: 190px;
-    padding: 5%;
+    padding: 1%;
 }
 
 .contentLeft {
-    margin-left: 10%;
-    margin-right: -18%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-between;
-    align-items: baseline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width: 70%;
-    line-height: 10px;
     font-size: 16px;
 }
 

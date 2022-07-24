@@ -18,7 +18,7 @@ function DonatePage() {
                     <button className="donate-btn-page"><a href="https://gofund.me/d56cc64c" target="_blank">Donate via GoFundMe</a></button>
                 </div>
                 <p>How much would you like to donate today?</p>
-                <div className="cardInput">
+                {/* <div className="cardInput">
                     <input type="decimal" placeholder="$10.00"/>
                     <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="1234 1234 1234 1234"/>
                     <input type="text" placeholder="MM / YY"/>
@@ -26,7 +26,7 @@ function DonatePage() {
                 </div>
             </div>
             <div className="contentRight">
-                <img src="./images/qr_test_7sI8AD444fxd6xafYY.png"/>
+                <img src="./images/qr_test_7sI8AD444fxd6xafYY.png"/> */}
             </div>
         </div>
   );
