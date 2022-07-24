@@ -1,10 +1,4 @@
-
-
 .nav {
-  /* background-image: url("../../../public/images/Jerry-Snyder-copy.jpeg");
-  background-repeat: no-repeat;
-  background-position-x: 50%;
-  background-position-y: -24px; */
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -14,13 +8,22 @@
   text-decoration: none;
 }
 
+img {
+  display: flex;
+  max-width: 10%;
+  flex-wrap: wrap;
+  margin-left: 0px;
+  margin-top: 1px;
+}
+
 .nav-title {
   font-size: 24px;
   font-weight: 700;
   color: #000000;
   text-align: left;
-  margin-left: 5%;
-  padding: 0;
+  margin-left: 12%;
+  margin-top: -7%;
+  padding: 17px;
 }
 
 .navLink {
