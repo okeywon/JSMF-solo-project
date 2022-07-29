@@ -21,9 +21,9 @@ function Application() {
         setFormData({name:'', email:'', phone: '', address: '', address2: '', about: '', whyYou: '', file: '', video: ''});
     }
 
-    // const autoComplete = () => {
-    //     setFormData({name:'David Tennent', email:'THEdoctor@gmail.com', phone: '213-645-7890', address: '123 Main St.', address2: 'Chisholm, MN 55123', about: "I'm the Doctor and I'm very good at traveling through time and space!", whyYou: "I'm clearly the only Doctor worthy of a scholarship as I am clearly THE Doctor. Also, I have the best companions - proven as they stayed on long after I was gone.", file: '', video: ''});
-    // }
+    const autoComplete = () => {
+        setFormData({name:'David Tennent', email:'THEdoctor@gmail.com', phone: '213-645-7890', address: '123 Main St.', address2: 'Chisholm, MN 55123', about: "I'm the Doctor and I'm very good at traveling through time and space!", whyYou: "I'm clearly the only Doctor worthy of a scholarship as I am clearly THE Doctor. Also, I have the best companions - proven as they stayed on long after I was gone.", file: '', video: ''});
+    }
 
     return (
         <div className="application">
@@ -149,7 +149,7 @@ function Application() {
                         value={formData.whyYou}
                     />
                     {errors.whyYou && touched.whyYou && errors.whyYou}
-                    <label for="file">Upload File</label>
+                    <label for="file">Upload File (optional)</label>
                     <input
                         className="input"
                         action="/upload"
@@ -158,7 +158,7 @@ function Application() {
                         onChange={(evt) => setFormData({...formData, file: evt.target.value})}
                         value={formData.file}
                     />
-                    <label for="video">Upload Video</label>
+                    <label for="video">Upload Video (optional)</label>
                     <input
                         className="input"
                         type="url"

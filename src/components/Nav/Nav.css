@@ -8,12 +8,13 @@
   text-decoration: none;
 }
 
-img {
+.logo {
   display: flex;
-  max-width: 10%;
-  flex-wrap: wrap;
-  margin-left: 0px;
-  margin-top: 1px;
+  max-width: 6%;
+  padding: 50px;
+  flex-wrap: nowrap;
+  margin-left: -2%;
+  margin-top: -3%;
 }
 
 .nav-title {

@@ -20,7 +20,7 @@ function LandingPage() {
         <div className="grid-col grid-col_4">
           {/* <RegisterForm /> */}
           <center>
-            <h4>Past Applicant Videos</h4>
+            <h4>Related Media</h4>
             <div className="video-responsive">
               <iframe
                 width="400"
